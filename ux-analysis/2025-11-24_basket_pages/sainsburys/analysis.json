@@ -1,0 +1,161 @@
+{
+  "site_name": "sainsburys",
+  "url": "https://sainsburys",
+  "analysis_type": "E-commerce Basket Page Analysis - UK Retail",
+  "overall_score": 5.8,
+  "competitive_position": {
+    "tier": "vulnerable",
+    "positioning": "Sainsbury's trolley page shows fundamental weaknesses in delivery transparency and mobile optimization, with minimal integration of retention mechanisms like subscriptions that are standard in modern pet food e-commerce.",
+    "key_differentiator": "Substitute promise offering refunds if unavailable items - customer-centric but not compelling enough to offset other gaps"
+  },
+  "criteria_scores": [
+    {
+      "criterion_id": "shipping_costs",
+      "criterion_name": "Shipping Cost & Free Delivery Threshold",
+      "score": 2,
+      "observations": "No delivery cost information is visible anywhere on the trolley page. The order summary shows only 'Trolley \u00a328.35' and 'Total to pay \u00a328.35' with no breakdown of delivery charges. There is no free delivery threshold indicator, no progress bar showing how much more to spend, and no visibility of delivery options or costs. Users will only discover delivery charges at checkout stage.",
+      "comparison_to_benchmarks": "This fails Baymard Institute's critical finding that 48% of users abandon due to unexpected shipping costs. Best practice requires prominent free shipping thresholds and progress indicators on the basket page. Competitors like Pets at Home show delivery costs and free delivery thresholds (typically \u00a329-39) directly in basket view.",
+      "competitive_status": "vulnerability"
+    },
+    {
+      "criterion_id": "subscription_options",
+      "criterion_name": "Subscription & Auto-Delivery Options",
+      "score": 0,
+      "observations": "There is absolutely no subscription or auto-delivery option visible anywhere on the trolley page. Given this is a pet food basket (dog food, cat food, cat treats), this is a critical omission. No 'Subscribe & Save' messaging, no recurring delivery options, no discount incentives for subscriptions. The page treats pet food as one-time purchases only.",
+      "comparison_to_benchmarks": "This is a major competitive vulnerability. Market leaders like Chewy, Amazon, and Pets at Home prominently feature subscription options with 5-15% savings in basket view. Pet food is the highest-conversion category for subscriptions due to predictable repeat purchase needs. Sainsbury's appears to have no subscription program at all for pet food.",
+      "competitive_status": "vulnerability"
+    },
+    {
+      "criterion_id": "basket_summary",
+      "criterion_name": "Basket Summary & Total Clarity",
+      "score": 6,
+      "observations": "Order summary on right side shows 'Trolley \u00a328.35' and 'Total to pay \u00a328.35'. Individual item prices are clearly displayed (\u00a314.00, \u00a31.40, \u00a312.95) with unit pricing (\u00a33.50/kg, \u00a318.67/kg, \u00a33.81/kg). However, there is no delivery cost breakdown, no VAT breakdown (though UK prices are VAT-inclusive by default), and no discount section visible. The summary updates in real-time is assumed but cannot be verified from static screenshot.",
+      "comparison_to_benchmarks": "Partial compliance with best practices. The total is prominent and clear, but the lack of delivery cost visibility undermines trust. Best practice requires showing delivery costs even if calculated later, with messaging like 'Delivery calculated at checkout'. The absence of any discount or savings section means users can't see value from promotions or multi-buy deals.",
+      "competitive_status": "parity"
+    },
+    {
+      "criterion_id": "product_details",
+      "criterion_name": "Product Details in Cart",
+      "score": 8,
+      "observations": "Product images are clear and adequately sized (approximately 80x100px). Pack sizes are prominently displayed in product names: '40x100g', '75g', '40 x 85g'. Unit pricing is shown (\u00a33.50/kg, \u00a318.67/kg, \u00a33.81/kg) which is excellent for comparison. Product names are complete with brand, product type, and variant details. However, there are no direct links back to product pages visible, and no inline pack size editing capability.",
+      "comparison_to_benchmarks": "Strong performance on pack size clarity, which addresses Baymard's finding that 27% abandon due to unclear order details. The unit pricing is particularly strong for pet food where pack sizes vary dramatically. Missing features: clickable product names for returning to PDP, and ability to change pack sizes inline without removing and re-adding.",
+      "competitive_status": "advantage"
+    },
+    {
+      "criterion_id": "mobile_layout",
+      "criterion_name": "Mobile Layout & Touch Usability",
+      "score": 7,
+      "observations": "Mobile view shows reasonable optimization: text appears readable (approximately 16px font size), quantity buttons (+/-) are large and tappable (appear to meet 44x44px standard), checkout CTA is visible at bottom. The basket items are stacked vertically appropriately. However, the 'Book a slot' button positioning at bottom requires scrolling past all items to reach, and there's no sticky CTA visible in mobile view. Checkboxes for 'Allow substitute' are small but functional.",
+      "comparison_to_benchmarks": "Meets many mobile basics (readable text, large touch targets) but misses critical sticky CTA best practice. With 65%+ mobile traffic in UK pet retail, the lack of sticky checkout button forces users to scroll extensively on longer baskets. Competitors like Amazon and Tesco use sticky CTAs effectively. The mobile layout is functional but not optimized for conversion.",
+      "competitive_status": "parity"
+    },
+    {
+      "criterion_id": "delivery_timing",
+      "criterion_name": "Delivery Timing & Urgency",
+      "score": 3,
+      "observations": "There is a 'Book a slot' button prominently displayed in orange, but no delivery timing information is visible on the trolley page itself. No cutoff times shown (e.g., 'Order within 2hrs for tomorrow'), no delivery date estimates, no urgency messaging. The slot booking appears to be a separate step rather than integrated into the basket view with timing visibility.",
+      "comparison_to_benchmarks": "Fails Nielsen Norman Group's guidance that delivery certainty early reduces anxiety. Best practice would show next available delivery slot directly in basket view with countdown timer if applicable. Tesco and Ocado excel here by showing 'Next available: Tomorrow 8-10am' directly in basket. Sainsbury's requires users to click through to discover delivery options.",
+      "competitive_status": "vulnerability"
+    },
+    {
+      "criterion_id": "express_checkout",
+      "criterion_name": "Express Checkout Options",
+      "score": 0,
+      "observations": "No express checkout options visible whatsoever. No Apple Pay button, no Google Pay, no PayPal express, no Shop Pay. Only a standard 'Book a slot' button is present. Payment method icons are shown at bottom (Visa, Mastercard, Maestro, Amex) but these are only indicators, not express checkout buttons. Users must go through full checkout flow regardless of device or payment method preferences.",
+      "comparison_to_benchmarks": "Major competitive vulnerability. With 40%+ Apple Pay adoption among UK iPhone users and Baymard's research showing 30-50% friction reduction from express checkout, this is a significant conversion inhibitor. Market leaders position Apple Pay and Google Pay buttons above standard checkout. Sainsbury's forces unnecessary friction on users who could checkout in seconds.",
+      "competitive_status": "vulnerability"
+    },
+    {
+      "criterion_id": "quantity_editing",
+      "criterion_name": "Quantity Selection & Editing",
+      "score": 8,
+      "observations": "Clear +/- buttons for quantity adjustment on each item, appropriately sized for both desktop and mobile. Quantity displayed between buttons in large, readable numbers. 'Remove' functionality not explicitly visible but assumed to be available via reducing to zero or separate control. The buttons appear functional and follow standard e-commerce patterns. No quantity limits displayed, suggesting flexible ordering.",
+      "comparison_to_benchmarks": "Meets best practices for quantity control. +/- buttons are the gold standard (superior to dropdowns or text-only input). Assuming real-time price updates work correctly (cannot verify from static screenshot), this component follows Baymard recommendations to minimize friction in basket editing. Minor gap: no direct 'Remove' link visible which would speed up item deletion.",
+      "competitive_status": "advantage"
+    },
+    {
+      "criterion_id": "checkout_cta",
+      "criterion_name": "Checkout CTA Clarity",
+      "score": 7,
+      "observations": "Primary CTA is 'Book a slot' button in prominent orange color with strong contrast against white background. Button is full-width in mobile view and appropriately sized. Copy is specific to Sainsbury's grocery delivery model (slot booking). However, the button is not sticky on mobile, requiring scroll to access. On desktop, it's positioned clearly in the order summary sidebar. No competing CTAs that create confusion.",
+      "comparison_to_benchmarks": "Good prominence and contrast, but copy may not be universally clear ('Book a slot' is specific to UK grocery delivery model - might confuse first-time users expecting 'Checkout' or 'Proceed to Payment'). Missing sticky positioning on mobile is a conversion inhibitor per Nielsen Norman Group guidance. Strong color and sizing meet best practices, but positioning could be optimized.",
+      "competitive_status": "parity"
+    },
+    {
+      "criterion_id": "cross_sell",
+      "criterion_name": "Cross-Sell & Related Products",
+      "score": 0,
+      "observations": "No cross-sell or related product recommendations visible anywhere on the trolley page. No 'Frequently bought together' section, no 'You may also like' suggestions, no complementary product recommendations. The page ends with 'Empty Trolley' text at bottom with no additional product discovery opportunities. Given this is a pet food basket, no treats, toys, or accessories are suggested.",
+      "comparison_to_benchmarks": "Complete absence of recommendations represents missed revenue opportunity. Amazon attributes 35% of revenue to recommendations. For a pet food basket, suggesting complementary treats, bowls, or toys is standard practice. Pets at Home and other pet retailers excel at contextual cross-sells. This is a clear competitive vulnerability in basket monetization.",
+      "competitive_status": "vulnerability"
+    },
+    {
+      "criterion_id": "trust_signals",
+      "criterion_name": "Payment Options & Trust Signals",
+      "score": 7,
+      "observations": "Payment method icons clearly displayed at bottom of order summary: Visa, Mastercard, Maestro, Amex. Text states 'We accept:' followed by card logos. Message 'Coupons can be applied at checkout' provides transparency. The 'Substitute Promise' section offers detailed explanation of unavailable item handling with refund guarantee. However, no SSL badge, no customer service contact visibility, no return policy link on this page.",
+      "comparison_to_benchmarks": "Good payment method visibility and the substitute promise is a unique trust builder. However, missing standard trust signals like SSL/secure checkout badges, customer service phone number, and return policy link. Baymard Institute notes 18% abandon due to trust concerns. The substitute promise partially addresses this but could be strengthened with additional security indicators near the CTA button.",
+      "competitive_status": "parity"
+    }
+  ],
+  "strengths": [
+    "Clear pack size and unit pricing display - critical for pet food category where pack sizes vary dramatically (40x100g vs single cans), reducing confusion and returns",
+    "Functional quantity editing with large +/- buttons optimized for both desktop and mobile touch targets",
+    "Substitute promise policy explicitly stated with refund guarantee - builds trust around stock availability concerns"
+  ],
+  "competitive_advantages": [
+    "Unit pricing transparency (\u00a3/kg) displayed prominently helps price-conscious pet food shoppers compare value across different pack formats",
+    "Mobile-friendly quantity controls with appropriately sized touch targets reduce friction in basket editing"
+  ],
+  "weaknesses": [
+    "Complete absence of subscription/auto-delivery options for repeat-purchase pet food products - missing critical retention mechanism",
+    "No delivery cost visibility or free shipping threshold on basket page - will cause checkout abandonment when costs revealed later",
+    "Zero express checkout options (Apple Pay, Google Pay) despite high mobile usage in UK pet retail",
+    "No product recommendations or cross-sell opportunities in basket - missing revenue optimization",
+    "No delivery timing or slot availability information visible without clicking through - creates uncertainty",
+    "Non-sticky checkout CTA on mobile requires scrolling to access on longer baskets"
+  ],
+  "exploitable_vulnerabilities": [
+    {
+      "vulnerability": "No subscription program for pet food - treating repeat-purchase category as one-time transactions only",
+      "opportunity": "Implement prominent Subscribe & Save with 10-15% discount and flexible delivery frequency options directly in basket view. Pet owners value convenience and predictability for essential food purchases.",
+      "user_impact": "Pet owners must remember to manually reorder food every month. No incentive to create recurring relationship. Competitors offering subscriptions capture higher lifetime value and reduce churn."
+    },
+    {
+      "vulnerability": "Delivery costs completely hidden until checkout stage with no free shipping threshold indicator",
+      "opportunity": "Display delivery cost and free shipping threshold (e.g., 'Add \u00a310.65 for free delivery') with visual progress bar in basket. Use urgency messaging around thresholds to increase average order value.",
+      "user_impact": "Users experience unexpected costs at checkout (Baymard's #1 abandonment reason). Heavy pet food products make shipping costs particularly relevant. No incentive to add more items to reach free delivery."
+    },
+    {
+      "vulnerability": "No express checkout options despite mobile-dominant UK market and high Apple Pay adoption",
+      "opportunity": "Implement Apple Pay, Google Pay, and PayPal Express positioned above standard checkout button. Enable one-tap checkout for logged-in users with saved payment methods.",
+      "user_impact": "Users forced through lengthy checkout forms even when they could checkout in seconds with saved digital wallet. Creates unnecessary friction especially on mobile where form completion is tedious."
+    },
+    {
+      "vulnerability": "Zero product recommendations in basket - no cross-sell or upsell opportunities",
+      "opportunity": "Add 'Frequently bought together' and 'Complete your pet's nutrition' sections with relevant treats, supplements, toys, and accessories. Enable one-click add to basket without leaving trolley page.",
+      "user_impact": "Pet owners shopping for food often need complementary products but must search separately. Missing opportunity to discover relevant products and increase convenience. Amazon-style recommendations are now expected."
+    }
+  ],
+  "unmet_user_needs": [
+    "Predictable auto-delivery for essential pet food without manual reordering - subscription convenience",
+    "Visibility into total cost including delivery before committing to checkout - price transparency",
+    "Fast checkout option for repeat customers who don't want to fill out forms - purchase speed",
+    "Delivery timing certainty and slot availability before starting checkout - planning and scheduling",
+    "Discovery of complementary pet products relevant to basket contents - one-stop shopping"
+  ],
+  "key_findings": [
+    "Sainsbury's trolley page is optimized for general grocery delivery but fails to address pet food category-specific needs like subscriptions, which are standard in specialized pet retail and represent a major retention opportunity",
+    "Critical delivery cost transparency gaps will drive abandonment at checkout stage - especially problematic for heavy pet food items where shipping costs are material. No mechanism to encourage users to reach free delivery thresholds",
+    "Missing modern checkout conveniences (express pay, sticky mobile CTA, recommendations) that are now table stakes in e-commerce. The experience feels dated compared to specialized pet retailers and Amazon",
+    "The substitute promise policy is a unique trust builder but cannot offset fundamental gaps in delivery transparency, subscription options, and checkout optimization that impact conversion",
+    "Strong foundation in product information clarity (pack sizes, unit pricing) but weak in conversion optimization and customer retention mechanisms - suggests focus on operational basics over growth optimization"
+  ],
+  "screenshots_analyzed": [
+    "output/audits/2025-11-24_basket_pages/sainsburys/screenshots/desktop.png",
+    "output/audits/2025-11-24_basket_pages/sainsburys/screenshots/mobile.png"
+  ],
+  "model_used": "claude-sonnet-4-5-20250929",
+  "success": true,
+  "screenshot_metadata": []
+}

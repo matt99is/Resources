@@ -1,0 +1,20 @@
+{
+  "audit_date": "2025-11-21",
+  "audit_timestamp": "2025-11-21T11:44:31.564212",
+  "analysis_type": "product_pages",
+  "analysis_type_name": "Product Page Analysis",
+  "total_competitors": 2,
+  "successful_analyses": 2,
+  "failed_analyses": 0,
+  "runtime_seconds": 217.4,
+  "competitors": [
+    {
+      "name": "asos",
+      "url": "https://www.asos.com/"
+    },
+    {
+      "name": "zara",
+      "url": "https://www.zara.com/"
+    }
+  ]
+}
