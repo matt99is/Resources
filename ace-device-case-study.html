@@ -76,21 +76,19 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            gap: 2rem;
             margin-top: 2rem;
-            flex-wrap: wrap;
         }
 
         .hero-image img {
-            height: 500px;
-            width: auto;
+            max-width: 100%;
+            height: auto;
             border-radius: 12px;
             box-shadow: 0 4px 24px rgba(0,0,0,0.1);
         }
 
         @media (max-width: 768px) {
-            .hero-image img {
-                height: 350px;
+            .hero-image {
+                margin-top: 1.5rem;
             }
         }
 
@@ -163,29 +161,24 @@
         .device-showcase {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin: 3rem 0;
-            flex-wrap: wrap;
+            margin: 3rem auto;
+            max-width: 100%;
         }
 
         .device-showcase img {
-            height: 400px;
-            width: auto;
+            max-width: 100%;
+            height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 16px rgba(0,0,0,0.1);
         }
 
-        .device-showcase.small img {
-            height: 300px;
+        .device-showcase.small {
+            max-width: 900px;
         }
 
         @media (max-width: 768px) {
-            .device-showcase img {
-                height: 300px;
-            }
-
-            .device-showcase.small img {
-                height: 250px;
+            .device-showcase {
+                margin: 2rem auto;
             }
         }
 
@@ -417,8 +410,7 @@
         </div>
 
         <div class="hero-image">
-            <img src="images/Homescreen.png" alt="ACE Device homescreen showing favourites">
-            <img src="images/StockInventory.png" alt="Stock Inventory screen">
+            <img src="images/ACEHero.png" alt="ACE Device interface showcasing key features">
         </div>
     </header>
 
@@ -492,7 +484,7 @@
         <p>The favourites system came from wanting to follow established patterns. Colleagues already know how their personal Android phones work. Letting them customise their homescreen with the tools they use most meant less learning and faster access.</p>
 
         <div class="device-showcase small">
-            <img src="images/Onboarding.png" alt="Onboarding screen explaining the favourites system">
+            <img src="images/ACEOnboarding.png" alt="Onboarding screen explaining the favourites system">
         </div>
     </section>
 
@@ -500,10 +492,10 @@
     <section class="alt wide">
         <p class="section-label">04 / Key Features</p>
         <h2>One Device, Every Task</h2>
-        
-        <p style="max-width: 800px;">The ACE device covers the full range of what a store colleague needs to do:</p>
 
-        <div class="feature-grid" style="max-width: 1000px;">
+        <p>The ACE device covers the full range of what a store colleague needs to do:</p>
+
+        <div class="feature-grid">
             <div class="feature-card">
                 <h3>Inventory & Stock</h3>
                 <p>Check stock levels, see when deliveries arrive, view sales data, adjust inventory, print tickets. Scan any product to get there instantly.</p>
@@ -530,9 +522,8 @@
             </div>
         </div>
 
-        <div class="device-showcase" style="max-width: 1000px;">
-            <img src="images/StockInventory.png" alt="Stock Inventory screen">
-            <img src="images/CustomerHub.png" alt="Customer Hub screen">
+        <div class="device-showcase">
+            <img src="images/ACEOFeatures.png" alt="ACE Device features including inventory and customer hub">
         </div>
     </section>
 
@@ -562,8 +553,7 @@
         </div>
 
         <div class="device-showcase small">
-            <img src="images/PINScreen.png" alt="PIN entry screen">
-            <img src="images/Homescreen.png" alt="Homescreen with favourites">
+            <img src="images/ACEpinhome.png" alt="PIN entry and homescreen with favourites">
         </div>
     </section>
 
