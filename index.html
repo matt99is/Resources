@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UX Designer portfolio featuring case studies in e-commerce, user research, and AI-assisted prototyping.">
+    <meta name="author" content="Matt Lelonek">
+    <title>Matt Lelonek | UX Designer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fafafa;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        header {
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .doc-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .doc-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+            border: 1px solid #eee;
+        }
+
+        .doc-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .doc-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .doc-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .doc-card .meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.75rem;
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #666;
+        }
+
+        .tag.case-study {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .tag.guide {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        footer a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Matt Lelonek</h1>
+            <p class="subtitle">UX Designer</p>
+        </header>
+
+        <section>
+            <p class="section-label">Case Studies</p>
+            <div class="doc-list">
+                <a href="minibasket-case-study.html" class="doc-card">
+                    <span class="tag case-study">Case Study</span>
+                    <h3>Redesigning the Minibasket to Increase AOV</h3>
+                    <p>How a redesigned "added to basket" modal with recommendations and a free delivery progress bar lifted AOV by £2 across platforms.</p>
+                    <div class="meta">
+                        <span>E-commerce</span>
+                        <span>User Research</span>
+                        <span>Prototyping</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <p class="section-label">Guides & Resources</p>
+            <div class="doc-list">
+                <a href="figma-make-workflow.html" class="doc-card">
+                    <span class="tag guide">Guide</span>
+                    <h3>Figma Make Workflow</h3>
+                    <p>A practical guide to AI-assisted prototyping using Figma Make and Claude Code.</p>
+                    <div class="meta">
+                        <span>Prototyping</span>
+                        <span>AI Tools</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p>Open to senior UX roles. Let's talk.</p>
+            <div class="links">
+                <a href="mailto:matt@example.com">Email</a>
+                <a href="https://linkedin.com/in/mattlelonek">LinkedIn</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

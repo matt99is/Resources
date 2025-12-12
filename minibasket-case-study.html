@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How a redesigned minibasket with recommendations and free delivery progress bar lifted AOV by £2 across platforms.">
+    <meta name="author" content="Matt Lelonek">
+    <title>Minibasket Case Study | Matt Lelonek</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subheadline {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+        }
+
+        .meta-value {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.875rem;
+            margin-top: 2rem;
+        }
+
+        /* Section styling */
+        section {
+            padding: 6rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section.wide {
+            max-width: 1200px;
+        }
+
+        section.alt {
+            background: #fafafa;
+            max-width: 100%;
+        }
+
+        section.alt > * {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section.alt.wide > * {
+            max-width: 1200px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            color: #444;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Image placeholders */
+        .image-placeholder {
+            width: 100%;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.875rem;
+            margin: 2rem 0;
+        }
+
+        .image-placeholder.small {
+            height: 300px;
+        }
+
+        .image-placeholder.medium {
+            height: 400px;
+        }
+
+        .image-placeholder.large {
+            height: 500px;
+        }
+
+        /* Variant grid */
+        .variant-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .variant-card {
+            background: #f8f8f8;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .variant-card.winner {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+        }
+
+        .variant-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .variant-card p {
+            font-size: 0.875rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .variant-card .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-top: 0.75rem;
+        }
+
+        .variant-card.winner .tag {
+            background: #4caf50;
+            color: white;
+        }
+
+        .variant-card .tag.fail {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .variant-card .tag.mixed {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        /* Two column layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+            .variant-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .two-col h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Blockquote */
+        blockquote {
+            border-left: 3px solid #1a1a1a;
+            padding-left: 1.5rem;
+            margin: 2rem auto;
+            font-size: 1.125rem;
+            font-style: italic;
+            color: #333;
+            max-width: 800px;
+        }
+
+        /* Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background: #f8f8f8;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-value.positive {
+            color: #2e7d32;
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .metric-detail {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 0.5rem;
+        }
+
+        /* Comparison table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table th {
+            font-weight: 600;
+            color: #666;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table .check {
+            color: #4caf50;
+        }
+
+        .comparison-table .cross {
+            color: #e53935;
+        }
+
+        .comparison-table .result {
+            font-weight: 500;
+        }
+
+        .comparison-table .result.winner {
+            color: #2e7d32;
+        }
+
+        .comparison-table .result.fail {
+            color: #c62828;
+        }
+
+        .comparison-table .result.mixed {
+            color: #e65100;
+        }
+
+        /* Callout box */
+        .callout {
+            background: #f0f7ff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .callout.green {
+            background: #e8f5e9;
+        }
+
+        .callout h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .callout p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Takeaways */
+        .takeaway {
+            margin-bottom: 2rem;
+        }
+
+        .takeaway:last-child {
+            margin-bottom: 0;
+        }
+
+        .takeaway h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .takeaway p {
+            color: #555;
+        }
+
+        /* Navigation */
+        .project-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #1a1a1a;
+        }
+
+        .nav-link .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-link .title {
+            font-weight: 500;
+        }
+
+        /* Highlight text */
+        .highlight {
+            background: linear-gradient(180deg, transparent 60%, #fef08a 60%);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <header class="hero">
+        <h1>Redesigning the Minibasket to Increase AOV</h1>
+        <p class="subheadline">A month from proposal to production. AOV up £2 across platforms.</p>
+        
+        <div class="meta">
+            <div class="meta-item">
+                <span class="meta-label">Role</span>
+                <span class="meta-value">UX Designer</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Timeline</span>
+                <span class="meta-value">1 month</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Methods</span>
+                <span class="meta-value">Prototype testing, AT validation</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Outcome</span>
+                <span class="meta-value">Shipped to web and app</span>
+            </div>
+        </div>
+
+        <div class="hero-image" style="background: none; height: auto;">
+            <img src="images/MiniBasket-Hero.png" alt="Minibasket side panel showing free delivery progress bar and product recommendations" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.1);">
+        </div>
+    </header>
+
+    <!-- The Opportunity -->
+    <section>
+        <p class="section-label">01 / The Opportunity</p>
+        <h2>Spotting the Gap</h2>
+        
+        <p>The business needed ways to increase average order value. Meanwhile, sitting on the buy it again roadmap was a future phase: a redesigned minibasket that would give users reasons to add more before checkout.</p>
+        
+        <p>The proposal had two parts.</p>
+        
+        <p>First, a <span class="highlight">free delivery progress bar</span>. Users would see exactly how far they were from the threshold. Clear, simple, motivating.</p>
+        
+        <p>Second, <span class="highlight">product recommendations</span> surfaced at the moment of commitment. When someone adds to their basket, they're already in buying mode. Show them something relevant and you've got a natural path to a bigger order.</p>
+        
+        <p>The timing was right. I proposed pulling this work forward.</p>
+
+        <div class="image-placeholder medium" style="background: none; height: auto;">
+            <img src="images/Annotated_AOV_Features.png" alt="Annotated minibasket showing free delivery progress bar and product recommendations" style="width: 100%; border-radius: 8px;">
+        </div>
+    </section>
+
+    <!-- The Question -->
+    <section class="alt">
+        <p class="section-label">02 / The Question</p>
+        <h2>How Should Recommendations Behave?</h2>
+        
+        <p>The free delivery bar was straightforward. Show progress, update it when items are added. Users understood it immediately and it was well received in testing.</p>
+        
+        <p>The recommendations were more complex. When a user adds a recommended product from within the modal, what should happen? Should the product move somewhere? Should they be able to change the quantity? What layout works best?</p>
+        
+        <p>These details matter. Get them wrong and you create confusion instead of conversions.</p>
+    </section>
+
+    <!-- Building the Prototypes -->
+    <section>
+        <p class="section-label">03 / AI-Assisted Prototyping</p>
+        <h2>Building the Prototypes</h2>
+        
+        <p>I built four fully functional prototypes using AI-assisted development. Each one tested a different combination of two variables: whether the product moves to the basket area when added, and whether users can adjust the quantity.</p>
+        
+        <p>These weren't wireframes or click-throughs. They were working prototypes with real interactions, built with proper accessibility: ARIA labels, keyboard navigation, screen reader support.</p>
+        
+        <p>Part of this was practical. I needed prototypes robust enough to test with assistive technology users. But I also wanted to see how far AI-assisted prototyping could go. Could I build something production-quality fast enough to ship within weeks?</p>
+        
+        <p>The answer was yes.</p>
+
+        <div style="margin: 2rem 0;">
+            <img src="images/Four_Variants.png" alt="Four variants tested: B, C, D, and E showing different interaction patterns" style="width: 100%; border-radius: 8px;">
+        </div>
+    </section>
+
+    <!-- The Research -->
+    <section class="alt">
+        <p class="section-label">04 / The Research</p>
+        <h2>Testing With Two Groups</h2>
+        
+        <p>I ran the research through usertesting.com with two separate groups.</p>
+        
+        <div class="two-col">
+            <div>
+                <h3>Regular Customers</h3>
+                <p>Tested all four interaction variants, then compared two layout options: a central modal versus a side panel.</p>
+            </div>
+            <div>
+                <h3>Assistive Technology Users</h3>
+                <p>I wanted to make sure the design worked for everyone, not just assume it did. This was the first time UX had run this kind of testing at the company.</p>
+            </div>
+        </div>
+
+        <div class="callout green">
+            <h4>Both groups pointed to the same winner.</h4>
+            <p>The assistive technology group validated that the interaction was clear and fully navigable.</p>
+        </div>
+    </section>
+
+    <!-- The Winner -->
+    <section>
+        <p class="section-label">05 / The Winner</p>
+        <h2>Variant C + Side Panel</h2>
+
+        <p>When users add a recommendation, the product moves up into the basket area. The "Add to basket" button becomes a quantity selector. The total updates immediately.</p>
+
+        <p>Users called it "straightforward" and "simple." The movement confirmed their action. The quantity controls gave them flexibility. Nobody got confused.</p>
+
+        <div class="callout green">
+            <h4>Interactive prototype</h4>
+            <p>The embedded prototype above demonstrates the Variant C interaction pattern.</p>
+        </div>
+
+        <blockquote>"I could see the item move into my basket, so I knew it worked."</blockquote>
+
+        <blockquote>"The plus and minus buttons were really intuitive."</blockquote>
+
+        <blockquote>"This feels natural, it's like ASOS or other sites I use."</blockquote>
+    </section>
+
+    <!-- Why Others Failed -->
+    <section class="alt">
+        <p class="section-label">06 / Why The Others Failed</p>
+        <h2>The Two Things Users Need</h2>
+        
+        <p>The other variants each broke one of two rules.</p>
+        
+        <div class="two-col">
+            <div>
+                <h3>Visual Feedback</h3>
+                <p>When users add something, they need to see it happen. Variants B and D kept the product in place after adding. Users weren't sure it had worked. "Where did my item go?"</p>
+            </div>
+            <div>
+                <h3>Quantity Control</h3>
+                <p>Users expect to adjust quantities. It's standard e-commerce functionality. Variants E and D removed this, and users noticed immediately. "I can't change the quantity!"</p>
+            </div>
+        </div>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Variant</th>
+                    <th>Visual Feedback</th>
+                    <th>Quantity Control</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>C</strong></td>
+                    <td class="check">✓</td>
+                    <td class="check">✓</td>
+                    <td class="result winner">Winner</td>
+                </tr>
+                <tr>
+                    <td><strong>B</strong></td>
+                    <td class="cross">✗</td>
+                    <td class="check">✓</td>
+                    <td class="result mixed">Confusing</td>
+                </tr>
+                <tr>
+                    <td><strong>E</strong></td>
+                    <td class="check">✓</td>
+                    <td class="cross">✗</td>
+                    <td class="result fail">Frustrating</td>
+                </tr>
+                <tr>
+                    <td><strong>D</strong></td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                    <td class="result fail">Failed</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Variant C was the only one that delivered both.</strong></p>
+    </section>
+
+    <!-- Results -->
+    <section>
+        <p class="section-label">07 / The Results</p>
+        <h2>What Happened After Launch</h2>
+        
+        <p>The minibasket shipped to web first, then app. Total time from proposal to live: one month.</p>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value positive">£47</div>
+                <div class="metric-label">AOV across platforms</div>
+                <div class="metric-detail">Web: £45 → £46. App: £43 → £47</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value positive">+42%</div>
+                <div class="metric-label">View Basket click rate</div>
+                <div class="metric-detail">4.83% → 6.87%</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value positive">+18%</div>
+                <div class="metric-label">Continue Shopping revenue/click</div>
+                <div class="metric-detail">£10.50 → £12.40</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value positive">5.7×</div>
+                <div class="metric-label">Recommendation click rate</div>
+                <div class="metric-detail">0.10% → 0.57%</div>
+            </div>
+        </div>
+
+        <p>The combination of the free delivery progress bar and recommendations gave users both the motivation and the means to add more.</p>
+    </section>
+
+    <!-- Takeaways -->
+    <section class="alt">
+        <p class="section-label">08 / Takeaways</p>
+        <h2>What I Learned</h2>
+        
+        <div class="takeaway">
+            <h3>Test with everyone</h3>
+            <p>Including AT users in the research was a first for the team. It added confidence that the design worked for all users, not just an assumption based on guidelines.</p>
+        </div>
+        
+        <div class="takeaway">
+            <h3>AI-assisted prototyping is production-ready</h3>
+            <p>I built four accessible, functional prototypes fast enough to test and ship within a month. This workflow is now part of how I approach problems.</p>
+        </div>
+        
+        <div class="takeaway">
+            <h3>Small interventions can move meaningful metrics</h3>
+            <p>This wasn't a full redesign. It was a focused change at a high-value moment in the journey. Two features working together, details tested properly, shipped fast.</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="project-nav">
+        <a href="index.html" class="nav-link">
+            <div class="label">← Back</div>
+            <div class="title">Home</div>
+        </a>
+        <a href="figma-make-workflow.html" class="nav-link" style="text-align: right;">
+            <div class="label">Next →</div>
+            <div class="title">Figma Make Workflow</div>
+        </a>
+    </nav>
+
+</body>
+</html>

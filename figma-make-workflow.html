@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A complete reference for AI-assisted prototyping using Figma Make and Claude Code for React projects.">
+    <meta name="author" content="Matt Lelonek">
+    <title>Figma Make Workflow Guide | Matt Lelonek</title>
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7f7f7;
+            --bg-tertiary: #eeeeee;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #888888;
+            --accent: #c45a2c;
+            --accent-hover: #a84820;
+            --border: #e0e0e0;
+            --code-bg: #f4f4f4;
+            --success: #2d7a3a;
+            --success-bg: rgba(45, 122, 58, 0.08);
+            --success-border: rgba(45, 122, 58, 0.25);
+            --warning: #9a7b2d;
+            --warning-bg: rgba(154, 123, 45, 0.08);
+            --warning-border: rgba(154, 123, 45, 0.25);
+            --danger: #c43a2c;
+            --danger-bg: rgba(196, 58, 44, 0.08);
+            --danger-border: rgba(196, 58, 44, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        header {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+
+        nav {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 60px;
+        }
+
+        nav h2 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        nav ol {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 8px;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+            letter-spacing: -0.3px;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 32px 0 16px 0;
+            color: var(--text-primary);
+        }
+
+        h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 24px 0 12px 0;
+            color: var(--accent);
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        .prompt-block {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .prompt-block pre {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.875rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .prompt-block code {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .inline-code {
+            background: var(--bg-tertiary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.875rem;
+            color: var(--accent);
+        }
+
+        .tip {
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tip-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .warning-block {
+            background: var(--danger-bg);
+            border: 1px solid var(--danger-border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+
+        .warning-block .warning-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--danger);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .warning-block p {
+            margin-bottom: 0;
+            color: var(--text-secondary);
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 600px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comparison-good, .comparison-weak {
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .comparison-good {
+            background: var(--success-bg);
+            border: 1px solid var(--success-border);
+        }
+
+        .comparison-weak {
+            background: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+        }
+
+        .comparison-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .comparison-good .comparison-label {
+            color: var(--success);
+        }
+
+        .comparison-weak .comparison-label {
+            color: var(--warning);
+        }
+
+        .comparison pre {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.825rem;
+            white-space: pre-wrap;
+            color: var(--text-secondary);
+        }
+
+        .checklist {
+            list-style: none;
+            margin: 16px 0;
+        }
+
+        .checklist li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--bg-secondary);
+        }
+
+        td {
+            color: var(--text-secondary);
+        }
+
+        td:first-child {
+            color: var(--accent);
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-weight: 500;
+        }
+
+        .principle-list {
+            list-style: none;
+            counter-reset: principle;
+        }
+
+        .principle-list > li {
+            margin-bottom: 32px;
+            padding-left: 48px;
+            position: relative;
+        }
+
+        .principle-list > li::before {
+            counter-increment: principle;
+            content: counter(principle);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .principle-list h4 {
+            margin-top: 0;
+            color: var(--text-primary);
+        }
+
+        .section-intro {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h4 {
+            margin: 0 0 8px 0;
+            color: var(--text-primary);
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .pitfall-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+        }
+
+        .pitfall-item h4 {
+            margin: 0 0 8px 0;
+        }
+
+        .pitfall-item .issue {
+            margin-bottom: 12px;
+        }
+
+        .pitfall-item .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .pitfall-item .solution {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .prompt-wrapper {
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--bg-tertiary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-right: 8px;
+        }
+
+        .badge-new {
+            background: var(--success-bg);
+            color: var(--success);
+            border: 1px solid var(--success-border);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div style="margin-bottom: 1rem;"><a href="index.html" style="color: #666; text-decoration: none; font-size: 0.875rem;">← Back to Home</a></div>
+            <h1>Figma Make Workflow Guide</h1>
+            <p>A complete reference for working with Figma Make on React prototypes. Initialize projects, write effective prompts, and maintain code quality throughout development.</p>
+        </header>
+
+        <nav>
+            <h2>Contents</h2>
+            <ol>
+                <li><a href="#initialization">Project Initialization</a></li>
+                <li><a href="#principles">Prompting Principles</a></li>
+                <li><a href="#templates">Prompt Templates</a></li>
+                <li><a href="#phased">Phased Implementation</a></li>
+                <li><a href="#clarifications">Mid-Task Clarifications</a></li>
+                <li><a href="#design-handoff">Figma Design Handoff</a></li>
+                <li><a href="#pitfalls">Common Pitfalls</a></li>
+                <li><a href="#maintenance">Maintenance & Cleanup</a></li>
+            </ol>
+        </nav>
+
+        <!-- Section 1: Project Initialization -->
+        <section id="initialization">
+            <h2>Project Initialization</h2>
+            <p class="section-intro">Use this prompt when starting a new React prototype. It establishes documentation and conventions from day one, giving Figma Make complete context for all future work.</p>
+
+            <h3>Initial Setup Prompt</h3>
+            <div class="prompt-wrapper">
+                <div class="prompt-block">
+                    <pre>Initialize this project with production-ready structure and documentation. Set up foundations that will scale as the project grows.
+
+<code>**Project Context**</code>
+[Describe: what it does, what you're testing, who it's for]
+
+<code>**File Structure**</code>
+Create a clean, scalable folder structure:
+- /components — reusable UI components
+- /pages or /views — top-level screens
+- /hooks — custom React hooks
+- /utils — helper functions
+- /types — TypeScript interfaces and types
+- /constants — configuration and design tokens
+
+<code>**Required Documentation**</code>
+
+README.md:
+- Project purpose and goals
+- What this prototype tests or demonstrates
+- Tech stack and dependencies
+- Setup instructions (install, run, build)
+- Folder structure overview
+- Links to other documentation files
+
+ARCHITECTURE.md:
+- Component hierarchy diagram (mermaid or ASCII)
+- Data flow explanation
+- State management approach
+- Event flow for key interactions
+- File naming conventions
+- Patterns for adding new features
+
+CONVENTIONS.md:
+- Component structure template
+- Prop naming standards
+- TypeScript patterns used
+- Styling approach
+- Event handler naming (handleClick, onChange)
+- Comment style and when to use them
+- Import ordering
+
+CHANGELOG.md:
+- Initial entry with project creation date
+- Version format explanation
+- Template for future entries
+
+<code>**Configuration Files**</code>
+
+designTokens.ts:
+- Colours (semantic naming)
+- Spacing scale
+- Typography (sizes, weights, line heights)
+- Border radii
+- Shadows
+- Breakpoints
+- Transitions
+
+config.ts:
+- Feature flags
+- API endpoints (if applicable)
+- Timeout values
+- Default states
+
+<code>**Code Foundations**</code>
+- One example component following all conventions
+- Types file with common interfaces
+- Utility function demonstrating code style
+
+<code>**Documentation Principles**</code>
+- Write as if briefing a developer who has never seen the codebase
+- Explain "why" behind decisions, not just "what"
+- Include code snippets as examples
+- Cross-reference between docs
+
+Start minimal but structured. Every file should follow patterns in CONVENTIONS.md.</pre>
+                </div>
+            </div>
+
+            <h3>Optional Add-ons</h3>
+            <p>Include these based on project type:</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4>User Testing Prototypes</h4>
+                    <p>Add VARIANT_GUIDE.md with variant system explanation, implementation steps, and testing checklist.</p>
+                </div>
+                <div class="card">
+                    <h4>Design System Work</h4>
+                    <p>Add COMPONENTS.md with component inventory, props documentation, and accessibility requirements.</p>
+                </div>
+                <div class="card">
+                    <h4>API-Connected</h4>
+                    <p>Add API.md with endpoint documentation, request/response shapes, and error handling patterns.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Prompting Principles -->
+        <section id="principles">
+            <h2>Prompting Principles</h2>
+            <p class="section-intro">How you phrase prompts significantly impacts output quality. Follow these principles for better results.</p>
+
+            <ol class="principle-list">
+                <li>
+                    <h4>Reference Your Documentation</h4>
+                    <p>Always point Figma Make to existing docs. This maintains consistency and prevents drift.</p>
+                    <div class="comparison">
+                        <div class="comparison-good">
+                            <div class="comparison-label">Good</div>
+                            <pre>Add a new button variant. Follow patterns in CONVENTIONS.md and use values from designTokens.ts.</pre>
+                        </div>
+                        <div class="comparison-weak">
+                            <div class="comparison-label">Weak</div>
+                            <pre>Add a new button variant.</pre>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <h4>Be Specific About Scope</h4>
+                    <p>Define exactly what should and shouldn't change.</p>
+                    <div class="comparison">
+                        <div class="comparison-good">
+                            <div class="comparison-label">Good</div>
+                            <pre>Refactor the CartTile component to extract the quantity selector into its own component. Don't change any functionality or styling — just the file structure.</pre>
+                        </div>
+                        <div class="comparison-weak">
+                            <div class="comparison-label">Weak</div>
+                            <pre>Clean up the CartTile component.</pre>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <h4>State the "Why"</h4>
+                    <p>Context helps Figma Make make better decisions.</p>
+                    <div class="comparison">
+                        <div class="comparison-good">
+                            <div class="comparison-label">Good</div>
+                            <pre>Add loading states to the checkout button. Users in testing were confused when nothing happened after clicking — they need visual feedback that their action registered.</pre>
+                        </div>
+                        <div class="comparison-weak">
+                            <div class="comparison-label">Weak</div>
+                            <pre>Add loading states to the checkout button.</pre>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <h4>Specify Outputs</h4>
+                    <p>Tell Figma Make what you expect back.</p>
+                    <div class="comparison">
+                        <div class="comparison-good">
+                            <div class="comparison-label">Good</div>
+                            <pre>Create a new ProductCard component. Return:
+- The component file
+- Updated exports in index.ts
+- TypeScript interface in types.ts
+- Entry in CHANGELOG.md</pre>
+                        </div>
+                        <div class="comparison-weak">
+                            <div class="comparison-label">Weak</div>
+                            <pre>Create a new ProductCard component.</pre>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <h4>One Task Per Prompt</h4>
+                    <p>Complex prompts with multiple unrelated tasks often produce worse results.</p>
+                    <div class="comparison">
+                        <div class="comparison-good">
+                            <div class="comparison-label">Good</div>
+                            <pre>Prompt 1: "Add form validation to the email input"
+Prompt 2: "Refactor the header navigation"</pre>
+                        </div>
+                        <div class="comparison-weak">
+                            <div class="comparison-label">Weak</div>
+                            <pre>Add form validation to the email input and also refactor the header navigation and update the colour scheme.</pre>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <h4>Use Consistent Terminology</h4>
+                    <p>Match the language in your documentation.</p>
+                    <div class="comparison">
+                        <div class="comparison-good">
+                            <div class="comparison-label">Good (if docs say "tile")</div>
+                            <pre>Create a new basket tile variant.</pre>
+                        </div>
+                        <div class="comparison-weak">
+                            <div class="comparison-label">Inconsistent</div>
+                            <pre>Create a new basket card variant.</pre>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <h4>Ask for Explanations When Learning</h4>
+                    <p>When you want to understand decisions, ask explicitly.</p>
+                    <div class="prompt-block">
+                        <pre>Refactor this component to improve performance. Explain what changes you made and why.</pre>
+                    </div>
+                </li>
+
+                <li>
+                    <h4>Request Analysis Before Implementation</h4>
+                    <p>For complex tasks, ask Figma Make to report back before making changes.</p>
+                    <div class="prompt-block">
+                        <pre>Report back with your analysis before implementing. Show me:
+- Current component structure
+- Your proposed changes
+- Any concerns or questions</pre>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Section 3: Prompt Templates -->
+        <section id="templates">
+            <h2>Prompt Templates</h2>
+            <p class="section-intro">Copy and adapt these for common tasks.</p>
+
+            <h3>Adding a New Component</h3>
+            <div class="prompt-block">
+                <pre>Create a new [ComponentName] component.
+
+Purpose: [What it does and where it's used]
+
+Requirements:
+- [Requirement 1]
+- [Requirement 2]
+- [Requirement 3]
+
+Follow patterns in CONVENTIONS.md. Use designTokens.ts for all styling values.
+
+Return:
+- Component file
+- TypeScript interface
+- Updated exports
+- CHANGELOG.md entry</pre>
+            </div>
+
+            <h3>Adding a Feature</h3>
+            <div class="prompt-block">
+                <pre>Add [feature] to [component/area].
+
+Context: [Why this feature is needed]
+
+Behaviour:
+- [How it should work]
+- [Edge cases to handle]
+- [User feedback needed]
+
+Follow existing patterns in ARCHITECTURE.md. Update documentation if this changes any established flows.
+
+Report back with your analysis before implementing.</pre>
+            </div>
+
+            <h3>Refactoring</h3>
+            <div class="prompt-block">
+                <pre>Refactor [component/area] to [goal].
+
+Current problem: [What's wrong or suboptimal]
+
+Constraints:
+- Preserve all existing functionality
+- Don't change the public API/props
+- Follow CONVENTIONS.md patterns
+
+Flag any technical debt discovered. Update CHANGELOG.md.
+
+Report back with your analysis before implementing.</pre>
+            </div>
+
+            <h3>Bug Fixing</h3>
+            <div class="prompt-block">
+                <pre>Fix: [Description of the bug]
+
+Current behaviour: [What happens now]
+Expected behaviour: [What should happen]
+Steps to reproduce: [If relevant]
+
+Keep changes minimal — only fix the bug, don't refactor unrelated code.</pre>
+            </div>
+
+            <h3>Documentation Updates</h3>
+            <div class="prompt-block">
+                <pre>Update documentation to reflect [change].
+
+Files to review:
+- README.md
+- ARCHITECTURE.md
+- [Other relevant docs]
+
+Ensure docs match current implementation. Flag any inconsistencies found.</pre>
+            </div>
+
+            <h3>Code Review Request</h3>
+            <div class="prompt-block">
+                <pre>Review [component/file] for:
+- Adherence to CONVENTIONS.md
+- Proper use of designTokens.ts and config.ts
+- Unused imports or dead code
+- Opportunities for improvement
+
+Don't make changes — just provide a summary of findings.</pre>
+            </div>
+        </section>
+
+        <!-- Section 4: Phased Implementation -->
+        <section id="phased">
+            <h2>Phased Implementation</h2>
+            <p class="section-intro">Complex tasks should be broken into phases with review points. This reduces risk and gives you control over the process.</p>
+
+            <h3>When to Use Phases</h3>
+            <ul class="checklist">
+                <li>Refactoring that touches multiple files</li>
+                <li>Adding features that affect existing behaviour</li>
+                <li>Merging or consolidating components</li>
+                <li>Any change you're not 100% confident about</li>
+            </ul>
+
+            <h3>Initial Phased Prompt</h3>
+            <div class="prompt-block">
+                <pre>[Describe the overall goal]
+
+<code>**Approach**</code>
+Break this into phases:
+- Phase 1: [First safe, reversible step]
+- Phase 2: [Next step, builds on Phase 1]
+- Phase 3: [Cleanup and documentation]
+
+Pause after each phase for review before continuing.
+
+Start with Phase 1. Report back with your analysis before implementing.</pre>
+            </div>
+
+            <h3>Phase Continuation Prompt</h3>
+            <div class="prompt-block">
+                <pre>Phase [N] looks good. Proceed with Phase [N+1].
+
+[Add any clarifications or adjustments based on what you saw]</pre>
+            </div>
+
+            <h3>Example: Responsive Refactor</h3>
+            <div class="prompt-block">
+                <pre>Refactor from separate desktop/mobile layouts to responsive.
+
+<code>**Approach**</code>
+- Phase 1: Header & Footer consolidation
+- Phase 2: Main layout conversion
+- Phase 3: Cleanup (remove URL params, update docs)
+
+Pause after each phase for review before continuing.
+
+Start with Phase 1.</pre>
+            </div>
+
+            <div class="tip">
+                <div class="tip-label">Tip</div>
+                <p>Keep phases small enough that you can review the changes in a few minutes. If a phase feels too big, split it further.</p>
+            </div>
+        </section>
+
+        <!-- Section 5: Mid-Task Clarifications -->
+        <section id="clarifications">
+            <h2>Mid-Task Clarifications</h2>
+            <p class="section-intro">Figma Make will sometimes make assumptions that don't match your intent. Catch and correct these early.</p>
+
+            <h3>Clarification Template</h3>
+            <div class="prompt-block">
+                <pre>Before continuing, clarification on [area]:
+
+<code>**[Topic 1]**</code>
+[Correct the assumption. Be specific about what you want.]
+
+<code>**[Topic 2]**</code>
+[Another correction if needed.]
+
+Proceed with [Phase/Task] using these clarifications.</pre>
+            </div>
+
+            <h3>Example: Correcting Mobile Behaviour</h3>
+            <div class="prompt-block">
+                <pre>Before Phase 2, clarification on mobile behaviour:
+
+<code>**Floating CTA (not floating basket summary)**</code>
+The mobile layout should NOT have a floating basket summary. Instead:
+- A floating CTA bar with: basket total + free delivery progress bar + checkout button
+- This floats at the bottom of the viewport as user scrolls
+- When user scrolls down to where the actual inline CTA sits on the page, the floating version disappears
+- This behaviour already exists in the current mobile layout — preserve it
+
+<code>**Basket Summary on Mobile**</code>
+- Basket summary displays inline within the page flow (not floating)
+- It sits below the basket items, above the footer
+
+Proceed with Phase 2 using these clarifications.</pre>
+            </div>
+
+            <h3>Preserve Existing Behaviour Template</h3>
+            <p>When refactoring, explicitly reference existing implementation as the source of truth.</p>
+            <div class="prompt-block">
+                <pre>The [mobile/desktop] layout at [breakpoint/condition] should be visually identical to [the current implementation / what the old parameter produced].
+
+If there are any differences, reference the original implementation as the source of truth and match it exactly.
+
+Preserve these existing behaviours:
+- [Specific behaviour 1]
+- [Specific behaviour 2]
+- [Specific behaviour 3]</pre>
+            </div>
+        </section>
+
+        <!-- Section 6: Figma Design Handoff -->
+        <section id="design-handoff">
+            <h2>Figma Design Handoff</h2>
+            <p class="section-intro">When you have Figma designs to implement, use a two-step process: analysis first, then paste designs.</p>
+
+            <h3>Step 1: Request Analysis</h3>
+            <div class="prompt-block">
+                <pre>Implement [feature] based on Figma designs.
+
+<code>**Current State**</code>
+[Describe what exists now]
+
+<code>**Desired Functionality**</code>
+[Describe the new behaviour]
+
+I will paste Figma designs for:
+- [Component 1]
+- [Component 2]
+- [etc.]
+
+Report back with your analysis before implementing. Show me:
+- Current component structure
+- Where the designs will be applied
+- Your proposed state management approach</pre>
+            </div>
+
+            <h3>Step 2: Paste Designs and Confirm</h3>
+            <p>After reviewing the analysis, paste your Figma designs and confirm:</p>
+            <div class="prompt-block">
+                <pre>[Paste Figma designs here]
+
+Use these designs for:
+- [Component 1] styling and structure
+- [Component 2] styling and structure
+
+Your analysis looks correct. Proceed with implementation.</pre>
+            </div>
+
+            <h3>Example: Adding a New UI Element</h3>
+            <div class="prompt-block">
+                <pre>Implement toast notification component.
+
+<code>**Current State**</code>
+- Inline notifications appear within page content
+- Show success message with "Undo" link
+- Persist until dismissed
+
+<code>**Desired Functionality**</code>
+- New toast/snackbar style as alternative
+- Appears at bottom of viewport
+- Auto-dismisses after 4 seconds
+- Toggle in variant UI to switch between styles
+
+I will paste Figma designs for:
+- Toast component styling
+- Success/confirmation state
+
+Report back with your analysis before implementing.</pre>
+            </div>
+
+            <div class="tip">
+                <div class="tip-label">Tip</div>
+                <p>Always get the analysis first. This catches misunderstandings before any code is written and saves you from unpicking incorrect implementations.</p>
+            </div>
+        </section>
+
+        <!-- Section 7: Common Pitfalls -->
+        <section id="pitfalls">
+            <h2>Common Pitfalls</h2>
+            <p class="section-intro">Issues encountered when working with Figma Make, and how to prevent or fix them.</p>
+
+            <div class="pitfall-item">
+                <h4>Documentation Claims Non-Existent Features</h4>
+                <div class="issue">
+                    <div class="label">Issue</div>
+                    <p>Figma Make documents features that don't exist in code (e.g., "Variant D" when only A, B, C exist). Users encounter errors when trying to use documented features.</p>
+                </div>
+                <div class="solution">
+                    <div class="label">Prevention</div>
+                    <p>Run documentation audits regularly. After any feature work, verify docs match implementation. Use the audit prompt to catch discrepancies.</p>
+                </div>
+            </div>
+
+            <div class="pitfall-item">
+                <h4>Assumptions About Mobile Behaviour</h4>
+                <div class="issue">
+                    <div class="label">Issue</div>
+                    <p>When refactoring, Figma Make may reinvent mobile UX rather than preserving existing patterns (e.g., making entire summary float instead of just the CTA).</p>
+                </div>
+                <div class="solution">
+                    <div class="label">Prevention</div>
+                    <p>Explicitly state which existing behaviours to preserve. Use the "Preserve Existing Behaviour" template. Test mobile view after each phase.</p>
+                </div>
+            </div>
+
+            <div class="pitfall-item">
+                <h4>State Management Not Specified</h4>
+                <div class="issue">
+                    <div class="label">Issue</div>
+                    <p>Complex features get implemented without clear state structure, leading to messy or duplicated state logic.</p>
+                </div>
+                <div class="solution">
+                    <div class="label">Prevention</div>
+                    <p>Include state requirements in your prompt. Ask for state management proposal in the analysis phase before implementation.</p>
+                </div>
+            </div>
+
+            <div class="pitfall-item">
+                <h4>Excessive Documentation Files</h4>
+                <div class="issue">
+                    <div class="label">Issue</div>
+                    <p>Figma Make creates many dated summary files (AUDIT_DEC10.md, SUMMARY_DEC10.md, etc.) that clutter the project root.</p>
+                </div>
+                <div class="solution">
+                    <div class="label">Prevention</div>
+                    <p>Periodically run: "Remove unneeded MD files. Keep only core documentation (README, ARCHITECTURE, CONVENTIONS, CHANGELOG) and current feature docs."</p>
+                </div>
+            </div>
+
+            <div class="pitfall-item">
+                <h4>Scope Creep in Refactoring</h4>
+                <div class="issue">
+                    <div class="label">Issue</div>
+                    <p>A simple refactor expands to touch unrelated files or "improve" things you didn't ask about.</p>
+                </div>
+                <div class="solution">
+                    <div class="label">Prevention</div>
+                    <p>Be explicit about constraints: "Only modify [specific files]. Don't change any other files. Keep changes minimal."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Maintenance -->
+        <section id="maintenance">
+            <h2>Maintenance & Cleanup</h2>
+            <p class="section-intro">Run these prompts periodically to keep the codebase healthy.</p>
+
+            <h3>When to Run Maintenance</h3>
+            <ul class="checklist">
+                <li>After adding new features</li>
+                <li>Before major version bumps</li>
+                <li>Weekly during active development</li>
+                <li>Before handoff or review sessions</li>
+                <li>When things start feeling "messy"</li>
+            </ul>
+
+            <h3>Maintenance Prompt</h3>
+            <div class="prompt-wrapper">
+                <div class="prompt-block">
+                    <pre>Perform a maintenance refactor of this project. Reference existing documentation to ensure code and docs remain aligned.
+
+<code>**Reference Documentation**</code>
+- ARCHITECTURE.md — system structure and data flow
+- CONVENTIONS.md — code style and patterns
+- designTokens.ts — single source of truth for styling
+- config.ts — single source of truth for configuration
+- [Add any project-specific docs]
+
+<code>**Code Cleanup**</code>
+- Remove unused imports and dead code
+- Replace any hardcoded values with designTokens.ts or config.ts references
+- Consolidate duplicate logic
+- Remove commented-out code blocks
+- Ensure all components follow patterns in CONVENTIONS.md
+
+<code>**Documentation Sync**</code>
+- Flag any code that contradicts documentation
+- Update docs if implementation has intentionally changed
+- Add changelog entry for any modifications made
+
+<code>**Consistency Check**</code>
+- Verify prop naming matches conventions
+- Check component structure follows ARCHITECTURE.md hierarchy
+- Ensure new code uses established patterns, not one-off solutions
+- Confirm designTokens.ts is used everywhere styling values appear
+
+<code>**Technical Debt**</code>
+- Flag areas needing future attention
+- Note any temporary solutions that should be revisited
+- Identify components that have grown too large
+
+<code>**File Cleanup**</code>
+- Remove redundant dated documentation files (e.g., SUMMARY_DEC10.md)
+- Keep only core docs and current feature documentation
+- Consolidate overlapping documentation
+
+Preserve all functionality. Document changes in CHANGELOG.md with today's date.</pre>
+                </div>
+            </div>
+
+            <h3>Documentation Audit Prompt</h3>
+            <p>Use this for deeper documentation reviews — before onboarding, after major features, or quarterly clean-ups.</p>
+            <div class="prompt-wrapper">
+                <div class="prompt-block">
+                    <pre>Perform a full audit of all project documentation. Ensure docs are accurate, consistent, and cross-referenced correctly.
+
+<code>**Documentation Files**</code>
+- README.md
+- ARCHITECTURE.md
+- CONVENTIONS.md
+- CHANGELOG.md
+- [Any project-specific docs, e.g., VARIANT_GUIDE.md]
+
+<code>**Accuracy Check**</code>
+- Verify all documented features exist in code
+- Verify all code patterns match what's documented
+- Remove references to deprecated or removed features
+- Update any outdated examples or code snippets
+
+<code>**Consistency Check**</code>
+- Ensure terminology is consistent across all docs
+- Check that file/component names match actual codebase
+- Verify prop names and APIs match current implementation
+- Align formatting and structure across docs
+
+<code>**Cross-Reference Audit**</code>
+- Ensure links between docs are valid
+- Check that ARCHITECTURE.md hierarchy matches actual components
+- Verify CONVENTIONS.md patterns match example code
+- Confirm CHANGELOG.md reflects all major changes
+
+<code>**Consolidation**</code>
+- Identify duplicated content across docs
+- Merge overlapping sections into single source of truth
+- Flag contradictions between docs
+- Remove redundant information
+- Delete unnecessary dated summary files
+
+<code>**Completeness**</code>
+- Flag undocumented components or patterns
+- Note any "TODO" or placeholder content
+- Identify gaps where documentation would help
+
+Provide a summary of changes made and any issues found.</pre>
+                </div>
+            </div>
+
+            <h3>Quick Cleanup Prompt</h3>
+            <p>For fast cleanups between major maintenance runs.</p>
+            <div class="prompt-block">
+                <pre>Quick cleanup:
+- Remove unused imports
+- Delete commented-out code
+- Remove redundant MD files from root (keep README, ARCHITECTURE, CONVENTIONS, CHANGELOG)
+- Update CHANGELOG.md with today's date
+
+Don't refactor or change functionality.</pre>
+            </div>
+        </section>
+
+        <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.875rem;">
+            <p style="margin-bottom: 0.5rem;">Figma Make Workflow Guide • Version 2.0</p>
+            <p><a href="index.html" style="color: var(--text-secondary); text-decoration: none;">← Back to Home</a></p>
+        </footer>
+    </div>
+</body>
+</html>
