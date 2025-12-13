@@ -40,7 +40,7 @@ Resources/
 
 ## Content
 
-### Case Studies (2)
+### Case Studies (3)
 
 **ACE Device - Unified Tool for Store Colleagues**
 - Ground-up enterprise device design
@@ -53,6 +53,13 @@ Resources/
 - A/B testing with 4 variants
 - £2 AOV lift across platforms
 - *Keywords: E-commerce, A/B Testing, Prototyping*
+
+**Basket Optimisation - Tackling 45% Abandonment Rate**
+- Research-driven basket page redesign
+- Baymard audit with 6 violations identified
+- Comprehensive user research and testing
+- Hi-fi React prototype with A/B variants
+- *Keywords: E-commerce, UX Research, Baymard Audit*
 
 ### Guides (1)
 

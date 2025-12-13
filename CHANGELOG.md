@@ -6,6 +6,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.2.0] - 2025-12-13
+
+### Added
+- **Basket Optimisation Case Study**
+  - New case study documenting 45% basket abandonment rate investigation
+  - Comprehensive Baymard audit findings (6 violations identified)
+  - Research methodology: competitor analysis, feature importance rankings, card sorting
+  - Hi-fi React prototype with A/B testing variants
+  - Supporting images (6 new): Baymard violations, charts, wireframes, prototypes
+  - Live prototype link integration
+
+### Changed
+- **Index Page Updates**
+  - Case studies count increased from 2 to 3
+  - New card for basket optimisation case study
+  - Meta tags: "Baymard Audit" added to tag vocabulary
+
+### Technical
+- Added proper meta description and author tags to basket case study
+- Favicon reference included for consistency
+- All HTML follows established template structure
+
+---
+
 ## [1.1.0] - 2025-12-12
 
 ### Added
