@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="[DESCRIPTION]">
+  <meta name="author" content="Matt Lelonek">
+  <title>[TITLE] | Matt Lelonek</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="/styles/design-system.css">
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <p class="overline">Case Study</p>
+      <h1>[TITLE]</h1>
+      <p class="hero-subtitle">[SUBTITLE]</p>
+      <div class="hero-meta">
+        <span>[DATE]</span>
+        <span>•</span>
+        <span>[READ TIME]</span>
+        <span class="tag">[TAG1]</span>
+        <span class="tag">[TAG2]</span>
+        <span class="tag">[TAG3]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Image (optional) -->
+  <div class="container">
+    <div class="hero-image">
+      <img src="[IMAGE_PATH]" alt="[IMAGE_ALT]" class="lightbox-trigger">
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Table of Contents -->
+    <nav class="toc">
+      <p class="toc-title">Contents</p>
+      <ol>
+        <li><a href="#section1">[Section 1 Title]</a></li>
+        <li><a href="#section2">[Section 2 Title]</a></li>
+        <li><a href="#section3">[Section 3 Title]</a></li>
+        <li><a href="#section4">[Section 4 Title]</a></li>
+        <!-- Add more sections as needed -->
+      </ol>
+    </nav>
+
+    <!-- Section 01 -->
+    <section id="section1" class="section">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">[Section 1 Title]</h2>
+      </div>
+
+      <p>[Content paragraphs here]</p>
+
+      <!-- Example: Metrics -->
+      <div class="metrics-highlight">
+        <div class="metric-card">
+          <div class="metric-value">[VALUE]</div>
+          <div class="metric-label">[LABEL]</div>
+        </div>
+      </div>
+
+      <!-- Example: Pull Quote -->
+      <div class="pull-quote">
+        <p>"[Quote text here]"</p>
+      </div>
+
+      <!-- Example: Callout -->
+      <div class="callout callout--insight">
+        <p class="callout-label">[Label]</p>
+        <p>[Callout content]</p>
+      </div>
+    </section>
+
+    <!-- Section 02 -->
+    <section id="section2" class="section">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">[Section 2 Title]</h2>
+      </div>
+
+      <h3>[Subsection Title]</h3>
+      <p>[Content]</p>
+
+      <!-- Example: Content Image -->
+      <div class="content-image">
+        <img src="[IMAGE_PATH]" alt="[IMAGE_ALT]" class="lightbox-trigger">
+        <p class="image-caption">[Caption text]</p>
+      </div>
+    </section>
+
+    <!-- Additional sections follow same pattern -->
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Open to senior UX roles. <a href="mailto:mattlelonek@gmail.com">Get in touch</a> or connect on <a href="https://www.linkedin.com/in/m-j-l/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox__content">
+      <button class="lightbox__close" aria-label="Close lightbox">&times;</button>
+      <img class="lightbox__image" src="" alt="">
+      <p class="lightbox__caption"></p>
+    </div>
+  </div>
+
+  <!-- Lightbox Script -->
+  <script src="/scripts/lightbox.js"></script>
+
+</body>
+</html>

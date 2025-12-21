@@ -275,40 +275,8 @@
     </div>
   </div>
 
-  <script>
-    // Lightbox functionality
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = lightbox.querySelector('.lightbox__image');
-    const lightboxCaption = lightbox.querySelector('.lightbox__caption');
-    const lightboxClose = lightbox.querySelector('.lightbox__close');
-    const triggers = document.querySelectorAll('.lightbox-trigger');
-
-    triggers.forEach(trigger => {
-      trigger.style.cursor = 'pointer';
-      trigger.addEventListener('click', () => {
-        lightboxImg.src = trigger.src;
-        lightboxImg.alt = trigger.alt;
-        lightboxCaption.textContent = trigger.alt;
-        lightbox.classList.add('active');
-      });
-    });
-
-    lightboxClose.addEventListener('click', () => {
-      lightbox.classList.remove('active');
-    });
-
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        lightbox.classList.remove('active');
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-        lightbox.classList.remove('active');
-      }
-    });
-  </script>
+  <!-- Lightbox Script -->
+  <script src="/scripts/lightbox.js"></script>
 
 </body>
 </html>

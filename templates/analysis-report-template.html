@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="[PAGE_TYPE] UX analysis across [NUM_COMPETITORS] competitors">
+  <meta name="author" content="Matt Lelonek">
+  <title>[PAGE_TYPE] UX Analysis | Matt Lelonek</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="/styles/design-system.css">
+
+  <!-- Plotly for interactive charts -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <p class="overline">UX Analysis Report</p>
+      <h1>[PAGE_TYPE] Analysis</h1>
+      <p class="hero-subtitle">Competitive UX maturity analysis across [NUM_COMPETITORS] competitors</p>
+      <div class="hero-meta">
+        <span>[DATE]</span>
+        <span>•</span>
+        <span>[NUM_COMPETITORS] Competitors</span>
+        <span>•</span>
+        <span>[NUM_CRITERIA] Criteria</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Table of Contents -->
+    <nav class="toc">
+      <p class="toc-title">Contents</p>
+      <ol>
+        <li><a href="#executive-summary">Executive Summary</a></li>
+        <li><a href="#key-insights">Key Insights</a></li>
+        <li><a href="#rankings">Overall Rankings</a></li>
+        <li><a href="#visualizations">Visual Analysis</a></li>
+        <li><a href="#competitors">Competitor Profiles</a></li>
+      </ol>
+    </nav>
+
+    <!-- Section 01: Executive Summary -->
+    <section id="executive-summary" class="section">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">Executive Summary</h2>
+      </div>
+
+      <div class="metrics-highlight">
+        <div class="stat-card">
+          <div class="stat-card__value">[VALUE]</div>
+          <div class="stat-card__label">[LABEL]</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__value">[VALUE]</div>
+          <div class="stat-card__label">[LABEL]</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__value">[VALUE]</div>
+          <div class="stat-card__label">[LABEL]</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 02: Key Insights -->
+    <section id="key-insights" class="section">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">Key Insights</h2>
+      </div>
+
+      <div class="insight-card">
+        <p class="insight-card__category">[Category]</p>
+        <p class="insight-card__text">[Insight content]</p>
+      </div>
+    </section>
+
+    <!-- Section 03: Rankings -->
+    <section id="rankings" class="section">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Overall Rankings</h2>
+      </div>
+
+      <table class="ranking-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Competitor</th>
+            <th>Score</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ranking-table__rank">#1</td>
+            <td>[Competitor Name]</td>
+            <td>[Score]</td>
+            <td><span class="score-badge score-badge--10">[Grade]</span></td>
+          </tr>
+          <!-- More rows -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Section 04: Visualizations -->
+    <section id="visualizations" class="section">
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Visual Analysis</h2>
+      </div>
+
+      <div class="chart-container">
+        <h3 class="chart-container__title">Competitor Comparison</h3>
+        <div id="radar-chart"></div>
+      </div>
+
+      <div class="chart-container">
+        <h3 class="chart-container__title">Criteria Performance</h3>
+        <div id="bar-chart"></div>
+      </div>
+
+      <div class="chart-container">
+        <h3 class="chart-container__title">Feature Adoption Heatmap</h3>
+        <div id="heatmap"></div>
+      </div>
+    </section>
+
+    <!-- Section 05: Competitor Profiles -->
+    <section id="competitors" class="section">
+      <div class="section-header">
+        <span class="section-number">05</span>
+        <h2 class="section-title">Competitor Profiles</h2>
+      </div>
+
+      <!-- Filter Panel (optional) -->
+      <div class="filter-panel">
+        <p class="filter-panel__title">Filter Competitors</p>
+        <div class="filter-panel__controls">
+          <!-- Filter controls here -->
+        </div>
+      </div>
+
+      <!-- Competitor Card Example -->
+      <div class="competitor-card">
+        <div class="competitor-card__header">
+          <h3 class="competitor-card__name">[Competitor Name]</h3>
+          <div>
+            <span class="competitor-card__rank">#1</span>
+            <span class="competitor-card__score">[Score]/100</span>
+          </div>
+        </div>
+
+        <div class="criteria-grid">
+          <div class="criteria-item">
+            <span class="criteria-item__name">[Criterion]</span>
+            <span class="score-badge score-badge--10">10/10</span>
+          </div>
+          <!-- More criteria items -->
+        </div>
+
+        <!-- Screenshots (optional) -->
+        <div class="content-image">
+          <img src="[SCREENSHOT_PATH]" alt="[ALT]" class="lightbox-trigger">
+          <p class="image-caption">[Caption]</p>
+        </div>
+      </div>
+
+      <!-- More competitor cards -->
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Generated by UX Maturity Analysis Tool • Open to senior UX roles. <a href="mailto:mattlelonek@gmail.com">Get in touch</a></p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox__content">
+      <button class="lightbox__close" aria-label="Close lightbox">&times;</button>
+      <img class="lightbox__image" src="" alt="">
+      <p class="lightbox__caption"></p>
+    </div>
+  </div>
+
+  <!-- Lightbox Script -->
+  <script src="/scripts/lightbox.js"></script>
+
+  <!-- Chart Scripts -->
+  <script>
+    // Plotly theme matching design system
+    const plotlyTheme = {
+      layout: {
+        font: {
+          family: 'Inter, sans-serif',
+          color: '#1A1A1A'
+        },
+        paper_bgcolor: '#FFFCF7',
+        plot_bgcolor: '#F8F5F0',
+        colorway: ['#B8432F', '#D4A59A', '#9A3626', '#F5E6E3'],
+        margin: { t: 40, r: 20, b: 40, l: 40 }
+      }
+    };
+
+    // Example radar chart
+    // Plotly.newPlot('radar-chart', radarData, plotlyTheme.layout);
+
+    // Example bar chart
+    // Plotly.newPlot('bar-chart', barData, plotlyTheme.layout);
+
+    // Example heatmap
+    // Plotly.newPlot('heatmap', heatmapData, plotlyTheme.layout);
+  </script>
+
+</body>
+</html>

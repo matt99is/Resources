@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="[DESCRIPTION]">
+  <meta name="author" content="Matt Lelonek">
+  <title>[TITLE] | Matt Lelonek</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="/styles/design-system.css">
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <p class="overline">Guide</p>
+      <h1>[TITLE]</h1>
+      <p class="hero-subtitle">[SUBTITLE]</p>
+      <div class="hero-meta">
+        <span>[DATE]</span>
+        <span>•</span>
+        <span>[READ TIME]</span>
+        <span class="tag">[TAG1]</span>
+        <span class="tag">[TAG2]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Table of Contents -->
+    <nav class="toc">
+      <p class="toc-title">Contents</p>
+      <ol>
+        <li><a href="#section1">[Section 1]</a></li>
+        <li><a href="#section2">[Section 2]</a></li>
+        <li><a href="#section3">[Section 3]</a></li>
+      </ol>
+    </nav>
+
+    <!-- Section 01 -->
+    <section id="section1" class="section">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">[Section Title]</h2>
+      </div>
+
+      <p>[Introduction content]</p>
+
+      <!-- Example: Principle Card -->
+      <div class="principle-card">
+        <div class="principle-card__number">1</div>
+        <div class="principle-card__content">
+          <h3>[Principle Title]</h3>
+          <p>[Principle description]</p>
+        </div>
+      </div>
+
+      <!-- Example: Prompt Block -->
+      <div class="prompt-block">
+        <span class="prompt-block__label">[Prompt Label]</span>
+        [Code or prompt content]
+      </div>
+
+      <!-- Example: Comparison Grid -->
+      <div class="comparison-grid">
+        <div class="comparison-grid__item comparison-grid__item--good">
+          <h4>✓ Good Example</h4>
+          <p>[Good example content]</p>
+        </div>
+        <div class="comparison-grid__item comparison-grid__item--weak">
+          <h4>✗ Weak Example</h4>
+          <p>[Weak example content]</p>
+        </div>
+      </div>
+
+      <!-- Example: Pitfall Warning -->
+      <div class="pitfall-warning">
+        <p class="pitfall-warning__title">⚠ Common Pitfall</p>
+        <p>[Warning content]</p>
+      </div>
+
+      <!-- Example: Checklist -->
+      <ul class="checklist">
+        <li>[Checklist item 1]</li>
+        <li>[Checklist item 2]</li>
+        <li>[Checklist item 3]</li>
+      </ul>
+    </section>
+
+    <!-- Additional sections follow same pattern -->
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Open to senior UX roles. <a href="mailto:mattlelonek@gmail.com">Get in touch</a> or connect on <a href="https://www.linkedin.com/in/m-j-l/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox (if using images) -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox__content">
+      <button class="lightbox__close" aria-label="Close lightbox">&times;</button>
+      <img class="lightbox__image" src="" alt="">
+      <p class="lightbox__caption"></p>
+    </div>
+  </div>
+
+  <!-- Lightbox Script -->
+  <script src="/scripts/lightbox.js"></script>
+
+</body>
+</html>
