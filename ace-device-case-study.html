@@ -1,616 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How we designed a unified device for store colleagues, replacing fragmented systems with a single tool built around their workflows.">
-    <meta name="author" content="Matt Lelonek">
-    <title>ACE Device Case Study | Matt Lelonek</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How we designed a unified device for store colleagues, replacing fragmented systems with a single tool built around their workflows.">
+  <meta name="author" content="Matt Lelonek">
+  <title>ACE Device Case Study | Matt Lelonek</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: #fff;
-        }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
 
-        /* Hero Section */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .hero .subheadline {
-            font-size: 1.25rem;
-            color: #666;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-
-        .meta-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #999;
-        }
-
-        .meta-value {
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .hero-image {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
-        }
-
-        @media (max-width: 768px) {
-            .hero-image {
-                margin-top: 1.5rem;
-            }
-        }
-
-        /* Section styling */
-        section {
-            padding: 6rem 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 768px) {
-            section {
-                padding: 4rem 1.5rem;
-            }
-
-            .hero {
-                padding: 3rem 1.5rem;
-                min-height: auto;
-            }
-
-            .project-nav {
-                padding: 2rem 1.5rem;
-            }
-        }
-
-        section.wide {
-            max-width: 1200px;
-        }
-
-        section.alt {
-            background: #fafafa;
-            max-width: 100%;
-        }
-
-        section.alt > * {
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        section.alt.wide > * {
-            max-width: 1200px;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #999;
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        p {
-            margin-bottom: 1.25rem;
-            color: #444;
-        }
-
-        p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Device showcase */
-        .device-showcase {
-            display: flex;
-            justify-content: center;
-            margin: 3rem auto;
-            max-width: 100%;
-        }
-
-        .device-showcase img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-        }
-
-        .device-showcase.small {
-            max-width: 900px;
-        }
-
-        @media (max-width: 768px) {
-            .device-showcase {
-                margin: 2rem auto;
-            }
-        }
-
-        /* Before/After comparison */
-        .before-after {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        @media (max-width: 768px) {
-            .before-after {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .before-after-card {
-            background: #f8f8f8;
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .before-after-card.before {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-        }
-
-        .before-after-card.after {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-        }
-
-        .before-after-card h4 {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
-
-        .before-after-card.before h4 {
-            color: #dc2626;
-        }
-
-        .before-after-card.after h4 {
-            color: #16a34a;
-        }
-
-        .before-after-card ul {
-            list-style: none;
-            font-size: 0.9rem;
-        }
-
-        .before-after-card li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .before-after-card li:last-child {
-            border-bottom: none;
-        }
-
-        /* Feature grid */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .feature-card {
-            background: #f8f8f8;
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #1a1a1a;
-        }
-
-        .feature-card p {
-            font-size: 0.9rem;
-            color: #666;
-            margin: 0;
-        }
-
-        /* Decision list */
-        .decision {
-            margin-bottom: 2rem;
-        }
-
-        .decision:last-child {
-            margin-bottom: 0;
-        }
-
-        .decision h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .decision p {
-            color: #555;
-        }
-
-        /* Results */
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .result-card {
-            background: #f0fdf4;
-            border-radius: 8px;
-            padding: 1.5rem;
-            border: 1px solid #bbf7d0;
-        }
-
-        .result-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #16a34a;
-            margin-bottom: 0.5rem;
-        }
-
-        .result-card p {
-            font-size: 0.9rem;
-            color: #444;
-            margin: 0;
-        }
-
-        /* Callout box */
-        .callout {
-            background: #f0f7ff;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .callout.green {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-        }
-
-        .callout h4 {
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .callout p {
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        /* Blockquote */
-        blockquote {
-            border-left: 3px solid #1a1a1a;
-            padding-left: 1.5rem;
-            margin: 2rem auto;
-            font-size: 1.125rem;
-            font-style: italic;
-            color: #333;
-            max-width: 800px;
-        }
-
-        /* Navigation */
-        .project-nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 3rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-top: 1px solid #eee;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: #1a1a1a;
-        }
-
-        .nav-link .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #999;
-            margin-bottom: 0.25rem;
-        }
-
-        .nav-link .title {
-            font-weight: 500;
-        }
-
-        /* Highlight text */
-        .highlight {
-            background: linear-gradient(180deg, transparent 60%, #bbf7d0 60%);
-        }
-    </style>
+  <!-- Design System -->
+  <link rel="stylesheet" href="/styles/design-system.css">
 </head>
 <body>
 
-    <!-- Hero -->
-    <header class="hero">
-        <h1>Designing a Unified Tool for Store Colleagues</h1>
-        <p class="subheadline">Replacing fragmented systems with a single device built around how colleagues actually work.</p>
-        
-        <div class="meta">
-            <div class="meta-item">
-                <span class="meta-label">Role</span>
-                <span class="meta-value">UX Designer</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Scope</span>
-                <span class="meta-value">Ground-up design</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Timeline</span>
-                <span class="meta-value">Ongoing</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Outcome</span>
-                <span class="meta-value">Thousands of hours saved across 450+ stores</span>
-            </div>
-        </div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <p class="overline">Case Study</p>
+      <h1>Designing a Unified Tool for Store Colleagues</h1>
+      <p class="hero-subtitle">Replacing fragmented systems with a single device built around how colleagues actually work</p>
+      <div class="hero-meta">
+        <span>UX Designer</span>
+        <span>•</span>
+        <span>Ground-up design</span>
+        <span>•</span>
+        <span>Ongoing</span>
+        <span class="tag">Enterprise UX</span>
+        <span class="tag">Mobile Design</span>
+        <span class="tag">User Research</span>
+      </div>
+    </div>
+  </section>
 
-        <div class="hero-image">
-            <img src="images/ACEHero.png" alt="ACE Device interface showcasing key features">
-        </div>
-    </header>
+  <!-- Hero Image -->
+  <div class="container">
+    <div class="hero-image">
+      <img src="images/ACEHero.png" alt="ACE Device interface showcasing key features" class="lightbox-trigger">
+    </div>
+  </div>
 
-    <!-- The Problem -->
-    <section>
-        <p class="section-label">01 / The Problem</p>
-        <h2>Too Many Systems, No Unified Experience</h2>
-        
-        <p>Before ACE, store colleagues were working across a patchwork of disconnected tools.</p>
-        
-        <p>A shared iPad ran an outdated system that had been built without UX input and without colleague feedback. It was difficult to use, counter-intuitive, and required too many steps to complete basic tasks.</p>
-        
-        <p>Stock taking and ticket printing lived on a separate device. Anything more complex meant walking to the back of the store to use a desktop PC. There was no voice communication between colleagues.</p>
-        
-        <p>The result: wasted time, friction at every turn, and a system that worked against the people using it rather than for them.</p>
+  <!-- Main Content -->
+  <main class="container">
 
-        <div class="before-after">
-            <div class="before-after-card before">
-                <h4>Before</h4>
-                <ul>
-                    <li>Shared iPad with outdated software</li>
-                    <li>Separate device for stock/tickets</li>
-                    <li>Desktop PC in back office</li>
-                    <li>No voice communication</li>
-                    <li>Built without colleague input</li>
-                    <li>Too many steps for basic tasks</li>
-                </ul>
-            </div>
-            <div class="before-after-card after">
-                <h4>After</h4>
-                <ul>
-                    <li>One device per colleague</li>
-                    <li>All tasks in one place</li>
-                    <li>Works on the shop floor</li>
-                    <li>Teams for voice comms</li>
-                    <li>Designed with colleagues</li>
-                    <li>Streamlined workflows</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Challenge -->
-    <section class="alt">
-        <p class="section-label">02 / The Challenge</p>
-        <h2>Building a System From Scratch</h2>
-        
-        <p>The goal was to unify everything into a single device. But this wasn't just a reskin. We needed to replatform dozens of different tasks, each with their own workflows and edge cases.</p>
-        
-        <p>That required a <span class="highlight">design system versatile enough to support rapid UX development</span> across very different features: inventory management, customer accounts, subscriptions, adoption centre processes, click and collect, voice comms.</p>
-        
-        <p>There was also a technical constraint. The device runs on Android, but we needed to lock it down for enterprise use. No system buttons, no native Android navigation. Our interface had to handle all navigation itself, comprehensively and intuitively.</p>
-
-        <div class="callout">
-            <h4>The constraint that shaped everything</h4>
-            <p>With native Android navigation disabled, I had to design a complete navigation system from scratch. It needed to handle app switching, back navigation, home access, and notifications, and be learnable in minutes.</p>
-        </div>
-    </section>
-
-    <!-- The Approach -->
-    <section>
-        <p class="section-label">03 / The Approach</p>
-        <h2>Designing With Colleagues, Not For Them</h2>
-        
-        <p>I worked directly with store colleagues throughout the process. Not surveys or secondhand feedback, but actually talking to the people who would use this device every day.</p>
-        
-        <p>What tasks take the longest? Where do you get stuck? What information do you need and when?</p>
-        
-        <p>This shaped everything from the information architecture to the default behaviours. For example, the barcode scanner is the primary input method for most tasks. Scan a product and it opens directly into the inventory system. Scan a customer's Pets Club card and it takes you straight to their account.</p>
-        
-        <p>The favourites system came from wanting to follow established patterns. Colleagues already know how their personal Android phones work. Letting them customise their homescreen with the tools they use most meant less learning and faster access.</p>
-
-        <div class="device-showcase small">
-            <img src="images/ACEOnboarding.png" alt="Onboarding screen explaining the favourites system">
-        </div>
-    </section>
-
-    <!-- Key Features -->
-    <section class="alt wide">
-        <p class="section-label">04 / Key Features</p>
-        <h2>One Device, Every Task</h2>
-
-        <p>The ACE device covers the full range of what a store colleague needs to do:</p>
-
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>Inventory & Stock</h3>
-                <p>Check stock levels, see when deliveries arrive, view sales data, adjust inventory, print tickets. Scan any product to get there instantly.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Customer Hub</h3>
-                <p>Search for a customer or scan their Pets Club card. Set up subscriptions, sell pets, update details. Everything in one place.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Adoption Centre</h3>
-                <p>Manage the full adoption process: accepting pets, quarantine tracking, adoption paperwork.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Operations</h3>
-                <p>Check in deliveries, manage click and collect orders, handle day-to-day store tasks.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Subscriptions</h3>
-                <p>Set up Easy Repeat orders and flea, tick and worm plans. Scan products to add them to subscriptions.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Communication</h3>
-                <p>Teams integration for voice comms between colleagues. No more shouting across the store.</p>
-            </div>
-        </div>
-
-        <div class="device-showcase">
-            <img src="images/ACEOFeatures.png" alt="ACE Device features including inventory and customer hub">
-        </div>
-    </section>
-
-    <!-- Design Decisions -->
-    <section>
-        <p class="section-label">05 / Design Decisions</p>
-        <h2>Built for the Context</h2>
-        
-        <div class="decision">
-            <h3>Custom navigation</h3>
-            <p>With native Android buttons disabled, I designed a navigation system that handles everything: app switching, back navigation, home access, notifications. It needed to be learnable in minutes, not hours.</p>
-        </div>
-
-        <div class="decision">
-            <h3>Barcode-first interaction</h3>
-            <p>The scanner is always ready. Default behaviour opens inventory, but context matters. In Easy Repeat setup, scanning adds the product to the subscription. In Customer Hub, scanning a Pets Club card pulls up that customer. The device anticipates what you're trying to do.</p>
-        </div>
-
-        <div class="decision">
-            <h3>Favourites over app drawers</h3>
-            <p>Rather than burying tools in menus, colleagues pin what they need to their homescreen. Different roles, different setups. A colleague focused on adoptions sees different tools than one focused on stock.</p>
-        </div>
-
-        <div class="decision">
-            <h3>Onboarding that stays out of the way</h3>
-            <p>New colleagues get a quick walkthrough of how to customise their favourites. After that, the system is intuitive enough that formal training is minimal.</p>
-        </div>
-
-        <div class="device-showcase small">
-            <img src="images/ACEpinhome.png" alt="PIN entry and homescreen with favourites">
-        </div>
-    </section>
-
-    <!-- Results -->
-    <section class="alt">
-        <p class="section-label">06 / The Results</p>
-        <h2>What Changed</h2>
-
-        <div class="results-grid">
-            <div class="result-card">
-                <h3>Thousands of hours saved</h3>
-                <p>Deployed across 450+ stores, tasks that required multiple devices and trips to the back office now happen on the shop floor.</p>
-            </div>
-            <div class="result-card">
-                <h3>Minimal training</h3>
-                <p>Even colleagues who described themselves as not good with technology picked it up without issue.</p>
-            </div>
-            <div class="result-card">
-                <h3>Positive feedback</h3>
-                <p>Colleagues were part of building it, and it shows in how they use it.</p>
-            </div>
-        </div>
-
-        <blockquote>
-            "The familiar patterns and streamlined workflows meant adoption was fast. This wasn't a system imposed on colleagues. They shaped it."
-        </blockquote>
-    </section>
-
-    <!-- What's Next -->
-    <section>
-        <p class="section-label">07 / What's Next</p>
-        <h2>Still Evolving</h2>
-        
-        <p>The current project is replacing a desktop system that contains dozens of eForms. Colleagues currently have to leave the shop floor to complete these on a PC in the back.</p>
-        
-        <p>We're simplifying this down to <span class="highlight">8 forms that will live on the ACE device</span>. Some of these will be completable via AI voice commands, letting colleagues fill in forms while their hands are busy with other tasks.</p>
-        
-        <p>The device keeps growing with the needs of the people using it.</p>
-
-        <div class="callout green">
-            <h4>Coming soon</h4>
-            <p>AI-powered voice forms, reducing dozens of desktop eForms to 8 mobile-friendly versions.</p>
-        </div>
-    </section>
-
-    <!-- Navigation -->
-    <nav class="project-nav">
-        <a href="index.html" class="nav-link">
-            <div class="label">← Back</div>
-            <div class="title">Home</div>
-        </a>
-        <a href="minibasket-case-study.html" class="nav-link" style="text-align: right;">
-            <div class="label">Next →</div>
-            <div class="title">Minibasket Redesign</div>
-        </a>
+    <!-- Table of Contents -->
+    <nav class="toc">
+      <p class="toc-title">Contents</p>
+      <ol>
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#challenge">The Challenge</a></li>
+        <li><a href="#approach">The Approach</a></li>
+        <li><a href="#features">Key Features</a></li>
+        <li><a href="#decisions">Design Decisions</a></li>
+        <li><a href="#results">The Results</a></li>
+        <li><a href="#next">What's Next</a></li>
+      </ol>
     </nav>
+
+    <!-- Section 01: The Problem -->
+    <section id="problem" class="section">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">The Problem</h2>
+      </div>
+
+      <h3>Too Many Systems, No Unified Experience</h3>
+
+      <p>Before ACE, store colleagues were working across a patchwork of disconnected tools.</p>
+
+      <p>A shared iPad ran an outdated system that had been built without UX input and without colleague feedback. It was difficult to use, counter-intuitive, and required too many steps to complete basic tasks.</p>
+
+      <p>Stock taking and ticket printing lived on a separate device. Anything more complex meant walking to the back of the store to use a desktop PC. There was no voice communication between colleagues.</p>
+
+      <p>The result: wasted time, friction at every turn, and a system that worked against the people using it rather than for them.</p>
+
+      <div class="before-after-grid">
+        <div class="before-after-item before-after-item--before">
+          <p class="before-after-item__label">Before</p>
+          <ul>
+            <li>Shared iPad with outdated software</li>
+            <li>Separate device for stock/tickets</li>
+            <li>Desktop PC in back office</li>
+            <li>No voice communication</li>
+            <li>Built without colleague input</li>
+            <li>Too many steps for basic tasks</li>
+          </ul>
+        </div>
+        <div class="before-after-item before-after-item--after">
+          <p class="before-after-item__label">After</p>
+          <ul>
+            <li>One device per colleague</li>
+            <li>All tasks in one place</li>
+            <li>Works on the shop floor</li>
+            <li>Teams for voice comms</li>
+            <li>Designed with colleagues</li>
+            <li>Streamlined workflows</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 02: The Challenge -->
+    <section id="challenge" class="section">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">The Challenge</h2>
+      </div>
+
+      <h3>Building a System From Scratch</h3>
+
+      <p>The goal was to unify everything into a single device. But this wasn't just a reskin. We needed to replatform dozens of different tasks, each with their own workflows and edge cases.</p>
+
+      <p>That required a design system versatile enough to support rapid UX development across very different features: inventory management, customer accounts, subscriptions, adoption centre processes, click and collect, voice comms.</p>
+
+      <p>There was also a technical constraint. The device runs on Android, but we needed to lock it down for enterprise use. No system buttons, no native Android navigation. Our interface had to handle all navigation itself, comprehensively and intuitively.</p>
+
+      <div class="callout callout--insight">
+        <p class="callout-label">The constraint that shaped everything</p>
+        <p>With native Android navigation disabled, I had to design a complete navigation system from scratch. It needed to handle app switching, back navigation, home access, and notifications, and be learnable in minutes.</p>
+      </div>
+    </section>
+
+    <!-- Section 03: The Approach -->
+    <section id="approach" class="section">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">The Approach</h2>
+      </div>
+
+      <h3>Designing With Colleagues, Not For Them</h3>
+
+      <p>I worked directly with store colleagues throughout the process. Not surveys or secondhand feedback, but actually talking to the people who would use this device every day.</p>
+
+      <p>What tasks take the longest? Where do you get stuck? What information do you need and when?</p>
+
+      <p>This shaped everything from the information architecture to the default behaviours. For example, the barcode scanner is the primary input method for most tasks. Scan a product and it opens directly into the inventory system. Scan a customer's Pets Club card and it takes you straight to their account.</p>
+
+      <p>The favourites system came from wanting to follow established patterns. Colleagues already know how their personal Android phones work. Letting them customise their homescreen with the tools they use most meant less learning and faster access.</p>
+
+      <div class="content-image">
+        <img src="images/ACEOnboarding.png" alt="Onboarding screen explaining the favourites system" class="lightbox-trigger">
+        <p class="image-caption">Onboarding screen explaining the favourites system</p>
+      </div>
+    </section>
+
+    <!-- Section 04: Key Features -->
+    <section id="features" class="section">
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Key Features</h2>
+      </div>
+
+      <h3>One Device, Every Task</h3>
+
+      <p>The ACE device covers the full range of what a store colleague needs to do:</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3 class="feature-card__title">Inventory & Stock</h3>
+          <p class="feature-card__description">Check stock levels, see when deliveries arrive, view sales data, adjust inventory, print tickets. Scan any product to get there instantly.</p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-card__title">Customer Hub</h3>
+          <p class="feature-card__description">Search for a customer or scan their Pets Club card. Set up subscriptions, sell pets, update details. Everything in one place.</p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-card__title">Adoption Centre</h3>
+          <p class="feature-card__description">Manage the full adoption process: accepting pets, quarantine tracking, adoption paperwork.</p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-card__title">Operations</h3>
+          <p class="feature-card__description">Check in deliveries, manage click and collect orders, handle day-to-day store tasks.</p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-card__title">Subscriptions</h3>
+          <p class="feature-card__description">Set up Easy Repeat orders and flea, tick and worm plans. Scan products to add them to subscriptions.</p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-card__title">Communication</h3>
+          <p class="feature-card__description">Teams integration for voice comms between colleagues. No more shouting across the store.</p>
+        </div>
+      </div>
+
+      <div class="content-image">
+        <img src="images/ACEOFeatures.png" alt="ACE Device features including inventory and customer hub" class="lightbox-trigger">
+        <p class="image-caption">ACE Device features including inventory and customer hub</p>
+      </div>
+    </section>
+
+    <!-- Section 05: Design Decisions -->
+    <section id="decisions" class="section">
+      <div class="section-header">
+        <span class="section-number">05</span>
+        <h2 class="section-title">Design Decisions</h2>
+      </div>
+
+      <h3>Built for the Context</h3>
+
+      <div class="decision-list">
+        <div class="decision-item">
+          <h4 class="decision-item__title">Custom navigation</h4>
+          <p class="decision-item__rationale">With native Android buttons disabled, I designed a navigation system that handles everything: app switching, back navigation, home access, notifications. It needed to be learnable in minutes, not hours.</p>
+        </div>
+
+        <div class="decision-item">
+          <h4 class="decision-item__title">Barcode-first interaction</h4>
+          <p class="decision-item__rationale">The scanner is always ready. Default behaviour opens inventory, but context matters. In Easy Repeat setup, scanning adds the product to the subscription. In Customer Hub, scanning a Pets Club card pulls up that customer. The device anticipates what you're trying to do.</p>
+        </div>
+
+        <div class="decision-item">
+          <h4 class="decision-item__title">Favourites over app drawers</h4>
+          <p class="decision-item__rationale">Rather than burying tools in menus, colleagues pin what they need to their homescreen. Different roles, different setups. A colleague focused on adoptions sees different tools than one focused on stock.</p>
+        </div>
+
+        <div class="decision-item">
+          <h4 class="decision-item__title">Onboarding that stays out of the way</h4>
+          <p class="decision-item__rationale">New colleagues get a quick walkthrough of how to customise their favourites. After that, the system is intuitive enough that formal training is minimal.</p>
+        </div>
+      </div>
+
+      <div class="content-image">
+        <img src="images/ACEpinhome.png" alt="PIN entry and homescreen with favourites" class="lightbox-trigger">
+        <p class="image-caption">PIN entry and homescreen with favourites</p>
+      </div>
+    </section>
+
+    <!-- Section 06: The Results -->
+    <section id="results" class="section">
+      <div class="section-header">
+        <span class="section-number">06</span>
+        <h2 class="section-title">The Results</h2>
+      </div>
+
+      <h3>What Changed</h3>
+
+      <div class="metrics-highlight">
+        <div class="metric-card">
+          <div class="metric-value">Thousands of hours saved</div>
+          <div class="metric-label">Deployed across 450+ stores, tasks that required multiple devices and trips to the back office now happen on the shop floor.</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">Minimal training</div>
+          <div class="metric-label">Even colleagues who described themselves as not good with technology picked it up without issue.</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">Positive feedback</div>
+          <div class="metric-label">Colleagues were part of building it, and it shows in how they use it.</div>
+        </div>
+      </div>
+
+      <blockquote>
+        <p>The familiar patterns and streamlined workflows meant adoption was fast. This wasn't a system imposed on colleagues. They shaped it.</p>
+      </blockquote>
+    </section>
+
+    <!-- Section 07: What's Next -->
+    <section id="next" class="section">
+      <div class="section-header">
+        <span class="section-number">07</span>
+        <h2 class="section-title">What's Next</h2>
+      </div>
+
+      <h3>Still Evolving</h3>
+
+      <p>The current project is replacing a desktop system that contains dozens of eForms. Colleagues currently have to leave the shop floor to complete these on a PC in the back.</p>
+
+      <p>We're simplifying this down to 8 forms that will live on the ACE device. Some of these will be completable via AI voice commands, letting colleagues fill in forms while their hands are busy with other tasks.</p>
+
+      <p>The device keeps growing with the needs of the people using it.</p>
+
+      <div class="callout callout--success">
+        <p class="callout-label">Coming soon</p>
+        <p>AI-powered voice forms, reducing dozens of desktop eForms to 8 mobile-friendly versions.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Open to senior UX roles. <a href="mailto:mattlelonek@gmail.com">Get in touch</a> or connect on <a href="https://www.linkedin.com/in/m-j-l/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox__content">
+      <button class="lightbox__close" aria-label="Close lightbox">&times;</button>
+      <img class="lightbox__image" src="" alt="">
+      <p class="lightbox__caption"></p>
+    </div>
+  </div>
+
+  <!-- Lightbox Script -->
+  <script src="/scripts/lightbox.js"></script>
 
 </body>
 </html>
