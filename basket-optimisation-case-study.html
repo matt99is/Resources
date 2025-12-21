@@ -38,7 +38,7 @@
   <!-- Hero Image -->
   <div class="container">
     <div class="hero-image">
-      <img src="images/HIFI-Basket-Prototype.png" alt="High-fidelity basket prototype showing redesigned layout with save for later and improved checkout flow">
+      <img src="images/HIFI-Basket-Prototype.png" alt="High-fidelity basket prototype showing redesigned layout with save for later and improved checkout flow" class="lightbox-trigger">
     </div>
   </div>
 
@@ -69,16 +69,16 @@
 
       <p>These aren't window shoppers. They've already decided to buy. They've found products, added them to their basket. Something at this final stage is stopping them.</p>
 
-      <div class="metrics-grid">
-        <div class="metric">
+      <div class="metrics-highlight">
+        <div class="metric-card">
           <div class="metric-value">44.6%</div>
           <div class="metric-label">Left without clicking checkout</div>
         </div>
-        <div class="metric">
+        <div class="metric-card">
           <div class="metric-value">8.79%</div>
           <div class="metric-label">Returned organically</div>
         </div>
-        <div class="metric">
+        <div class="metric-card">
           <div class="metric-value">109k</div>
           <div class="metric-label">Unclaimed baskets per month</div>
         </div>
@@ -124,7 +124,7 @@
       <p>The page did meet standards in two areas: showing the full order cost including delivery at the cart step, and keeping the discount code field collapsed behind a link to avoid distraction.</p>
 
       <div class="content-image">
-        <img src="images/Baymard_Violations.png" alt="Current basket page annotated with Baymard violations showing 6 BAD ratings">
+        <img src="images/Baymard_Violations.png" alt="Current basket page annotated with Baymard violations showing 6 BAD ratings" class="lightbox-trigger">
         <p class="image-caption">Current basket with Baymard violations annotated</p>
       </div>
 
@@ -185,7 +185,7 @@
       <p>I started with 4-6 basic wireframes focused on information architecture before moving to interactions. The wireframes were built with detailed annotations explaining the rationale for each decision.</p>
 
       <div class="content-image">
-        <img src="images/LOFI-BasketInteractions.png" alt="Lo-fi wireframes with annotations showing basket layout and interaction patterns">
+        <img src="images/LOFI-BasketInteractions.png" alt="Lo-fi wireframes with annotations showing basket layout and interaction patterns" class="lightbox-trigger">
         <p class="image-caption">Annotated wireframes exploring information architecture and interactions</p>
       </div>
     </section>
@@ -265,6 +265,50 @@
       <p>Open to senior UX roles. <a href="mailto:mattlelonek@gmail.com">Get in touch</a> or connect on <a href="https://www.linkedin.com/in/m-j-l/" target="_blank" rel="noopener">LinkedIn</a>.</p>
     </div>
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox__content">
+      <button class="lightbox__close" aria-label="Close lightbox">&times;</button>
+      <img class="lightbox__image" src="" alt="">
+      <p class="lightbox__caption"></p>
+    </div>
+  </div>
+
+  <script>
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('.lightbox__image');
+    const lightboxCaption = lightbox.querySelector('.lightbox__caption');
+    const lightboxClose = lightbox.querySelector('.lightbox__close');
+    const triggers = document.querySelectorAll('.lightbox-trigger');
+
+    triggers.forEach(trigger => {
+      trigger.style.cursor = 'pointer';
+      trigger.addEventListener('click', () => {
+        lightboxImg.src = trigger.src;
+        lightboxImg.alt = trigger.alt;
+        lightboxCaption.textContent = trigger.alt;
+        lightbox.classList.add('active');
+      });
+    });
+
+    lightboxClose.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+      }
+    });
+  </script>
 
 </body>
 </html>
