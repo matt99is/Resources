@@ -1000,18 +1000,23 @@ a.card {
 
 /* Content sections */
 .content-section {
-  max-width: var(--max-width-prose);
-  margin: 0 auto;
-  padding: var(--space-12) var(--space-6);
+  padding: var(--space-12) 0;
 }
 
-.content-section--wide {
+.content-section > * {
+  max-width: var(--max-width-prose);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+.content-section--wide > * {
   max-width: var(--max-width-wide);
 }
 
 .content-section--alt {
   background: var(--bg-secondary);
-  max-width: 100%;
 }
 
 /* Quote grid */
