@@ -17,272 +17,266 @@
   <link rel="stylesheet" href="/styles/design-system.css">
 </head>
 <body>
-  <!-- Page Header -->
-  <header class="page-header">
-    <nav class="breadcrumb">
-      <a href="/">Case Studies</a>
-      <span>/</span>
-      <span>Basket Optimisation</span>
-    </nav>
 
-    <h1 class="page-header__title">Tackling a 45% Basket Abandonment Rate</h1>
-    <p class="page-header__subtitle">How I identified a £57M opportunity, built the business case, and designed a research-backed solution</p>
-
-    <div class="page-header__meta">
-      <span>December 2025</span>
-      <span>•</span>
-      <span>10 min read</span>
-    </div>
-
-    <div class="page-header__tags">
-      <span class="tag">E-commerce</span>
-      <span class="tag">UX Research</span>
-      <span class="tag">Baymard</span>
-    </div>
-
-    <div class="image-container">
-      <img src="images/HIFI-Basket-Prototype.png" alt="High-fidelity basket prototype showing redesigned layout with save for later and improved checkout flow" class="lightbox-trigger">
-    </div>
-  </header>
-
-  <!-- The Opportunity -->
-  <section class="content-section">
-    <h2 class="section-title">The Opportunity</h2>
-
-    <p>In October 2025, 268,614 customers viewed their basket. Almost 120,000 of them left without clicking checkout. Only 8.79% returned organically to complete their purchase.</p>
-
-    <p>These aren't window shoppers. They've already decided to buy. They've found products, added them to their basket. Something at this final stage is stopping them.</p>
-
-    <div class="metrics-grid">
-      <div class="metric">
-        <span class="metric__value" style="color: var(--status-error);">44.6%</span>
-        <span class="metric__label">Left without clicking checkout</span>
-      </div>
-      <div class="metric">
-        <span class="metric__value">8.79%</span>
-        <span class="metric__label">Returned organically</span>
-      </div>
-      <div class="metric">
-        <span class="metric__value">109k</span>
-        <span class="metric__label">Unclaimed baskets per month</span>
-      </div>
-    </div>
-
-    <blockquote class="pull-quote">
-      "No two users organised basket features identically — a clear signal of fundamental information architecture problems."
-    </blockquote>
-
-    <p>Rather than guessing at solutions, I proposed a structured research approach using Baymard Institute methodology. The initial audit revealed our current basket experience rated as "POOR" with a net score of -2.4.</p>
-
-    <div class="metrics-grid">
-      <div class="metric">
-        <div class="metric__value">£57M</div>
-        <div class="metric__label">Annual Opportunity</div>
-      </div>
-      <div class="metric">
-        <div class="metric__value">-2.4</div>
-        <div class="metric__label">Baymard Net Score</div>
-      </div>
-      <div class="metric">
-        <div class="metric__value">5</div>
-        <div class="metric__label">High-Impact Violations</div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <p class="overline">Case Study</p>
+      <h1>Tackling a 45% Basket Abandonment Rate</h1>
+      <p class="hero-subtitle">How I identified a £57M opportunity, built the business case, and designed a research-backed solution</p>
+      <div class="hero-meta">
+        <span>December 2025</span>
+        <span>•</span>
+        <span>10 min read</span>
+        <span class="tag">E-commerce</span>
+        <span class="tag">UX Research</span>
+        <span class="tag">Baymard</span>
       </div>
     </div>
   </section>
 
-  <!-- Research Methodology -->
-  <section class="content-section">
-    <h2 class="section-title">Research Methodology</h2>
-
-    <p>I combined quantitative analysis with qualitative research methods to build a comprehensive picture of user behaviour and pain points.</p>
-
-    <p>I audited the current basket against Baymard Institute guidelines. The result: 6 high-impact violations and only 2 areas meeting best practice.</p>
-
-    <p>The major violations included no save for later functionality, no undo option for removed items, dropdown quantity selectors instead of +/- buttons, inability to edit product variants in the cart, small product thumbnails making it hard to verify items, and missing free shipping threshold information in the order summary.</p>
-
-    <p>The page did meet standards in two areas: showing the full order cost including delivery at the cart step, and keeping the discount code field collapsed behind a link to avoid distraction.</p>
-
-    <div class="image-container">
-      <img src="images/Baymard_Violations.png" alt="Current basket page annotated with Baymard violations showing 6 BAD ratings" class="lightbox-trigger">
-      <p class="image-caption">Current basket with Baymard violations annotated</p>
-    </div>
-
-    <div class="callout callout--warning">
-      <span class="callout__label">The Baymard verdict</span>
-      <p>Current rating: Poor. The goal is to reach Perfect by addressing all identified violations in the redesign.</p>
-    </div>
-
-    <div class="research-grid">
-      <div class="research-card">
-        <h3 class="research-card__title">Competitor Analysis</h3>
-        <p class="research-card__description">16 pet retail sites analysed against 11 UX criteria. Built a tool with Claude Code to automate the process. What would have taken weeks took days.</p>
-      </div>
-      <div class="research-card">
-        <h3 class="research-card__title">Feature Importance Rankings</h3>
-        <p class="research-card__description">Asked users to rank 10 basket features by importance. Checkout CTA and Basket Totals ranked #1 and #2. Neither is prominent above the fold on our current page.</p>
-      </div>
-      <div class="research-card">
-        <h3 class="research-card__title">Card Sorting</h3>
-        <p class="research-card__description">Tested how users naturally group basket features. No two participants organised them the same way, revealing fundamental information architecture problems.</p>
-      </div>
-    </div>
-
-    <div class="callout callout--info">
-      <span class="callout__label">Key finding from competitor analysis</span>
-      <p>Subscription options are absent from 60% of competitors. Express checkout options and delivery timing information are also weak across the market. These are opportunities to differentiate, not just catch up.</p>
-    </div>
-  </section>
-
-  <!-- Design Process -->
-  <section class="content-section content-section--alt">
-    <h2 class="section-title">Design Process</h2>
-
-    <p>This isn't a redesign for redesign's sake. Every change in the prototype relates directly to Baymard best practices, competitor analysis findings, or user research. Engineering was involved from the start to ensure feasibility.</p>
-
-    <div class="process-steps">
-      <div class="process-step">Wireframes</div>
-      <span class="process-arrow">→</span>
-      <div class="process-step">Lo-fi Prototype</div>
-      <span class="process-arrow">→</span>
-      <div class="process-step">User Testing</div>
-      <span class="process-arrow">→</span>
-      <div class="process-step">Hi-fi Prototype</div>
-    </div>
-
-    <p>I started with 4-6 basic wireframes focused on information architecture before moving to interactions. The wireframes were built with detailed annotations explaining the rationale for each decision.</p>
-
-    <div class="image-container">
-      <img src="images/LOFI-BasketInteractions.png" alt="Lo-fi wireframes with annotations showing basket layout and interaction patterns" class="lightbox-trigger">
-      <p class="image-caption">Annotated wireframes exploring information architecture and interactions</p>
-    </div>
-  </section>
-
-  <!-- User Testing -->
-  <section class="content-section">
-    <h2 class="section-title">User Testing</h2>
-
-    <p>The lo-fi prototype was tested on usertesting.com and internally. The feedback validated the approach and highlighted areas for refinement.</p>
-
-    <div class="quote-grid">
-      <div class="quote-card">
-        <blockquote class="quote-card__text">"It's the sort of checkout, website checkout thing I would be pleased to use because it's just very intuitive."</blockquote>
-        <div class="quote-card__attribution">— Jorvik, usertesting.com</div>
-      </div>
-      <div class="quote-card">
-        <blockquote class="quote-card__text">"I really like the option to edit the product and change the size from within the basket rather than having to go out and find the product again."</blockquote>
-        <div class="quote-card__attribution">— Devastated, usertesting.com</div>
-      </div>
-      <div class="quote-card">
-        <blockquote class="quote-card__text">"From an end user perspective, it was really simple. It was really effective."</blockquote>
-        <div class="quote-card__attribution">— Devastated, usertesting.com</div>
-      </div>
-      <div class="quote-card">
-        <blockquote class="quote-card__text">"I was really impressed with sort of being able to add the delivery choices that you wanted. It reflected it all on the system and updated accordingly."</blockquote>
-        <div class="quote-card__attribution">— Taketest, usertesting.com</div>
-      </div>
-    </div>
-
-    <div class="callout callout--info">
-      <span class="callout__label">Actionable feedback</span>
-      <p>One user noted that "Save" as a label was unclear: "I wouldn't really know that would be to take the product away. Maybe if there was a clearer way of saying that with sort of language." This kind of feedback drives iteration.</p>
-    </div>
-  </section>
-
-  <!-- The Prototype -->
-  <section class="content-section content-section--alt">
-    <h2 class="section-title">The Prototype</h2>
-
-    <p>The hi-fi prototype isn't a static design. It's a fully functional, accessible React build with real interactions and configurable variants for A/B testing different approaches.</p>
-
-    <p>Key features include full checkout flow, save for later, subscription setup, delivery method selection, variant/quantity editing, free delivery progress, undo functionality, and complete responsive design with accessibility built in.</p>
-
-    <div class="callout callout--tip">
-      <span class="callout__label">Try the live prototype</span>
-      <p>The prototype is fully interactive and demonstrates the complete basket experience with configurable variants for A/B testing.</p>
-      <a href="https://snort-serene-59331563.figma.site/" class="btn btn--primary mt-4" target="_blank">View Live Prototype →</a>
-    </div>
-  </section>
-
-  <!-- Implementation -->
-  <section class="content-section">
-    <h2 class="section-title">Implementation</h2>
-
-    <p>The next step is user testing on the hi-fi prototype, followed by building an implementation roadmap. This won't ship all at once. It will be integrated piece by piece, with each change measured for impact.</p>
-
-    <div class="callout callout--tip">
-      <span class="callout__label">The fix for basket persistence</span>
-      <p>The technical issue that started this investigation, basket persistence across sessions, is now in development. This paves the way for the abandoned basket email that originally surfaced the problem.</p>
-    </div>
-  </section>
-
-
-  <!-- Project Navigation -->
-  <nav class="project-nav">
-    <a href="ace-device-case-study.html" class="project-nav__link">
-      <div class="project-nav__label">← Previous</div>
-      <div class="project-nav__title">ACE Device</div>
-    </a>
-    <a href="index.html" class="project-nav__link text-right">
-      <div class="project-nav__label">Back to</div>
-      <div class="project-nav__title">All Projects</div>
-    </a>
-  </nav>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox__content">
-      <button class="lightbox__close" onclick="closeLightbox()">×</button>
-      <img src="" alt="" class="lightbox__image" id="lightbox-image">
-      <p class="lightbox__caption" id="lightbox-caption"></p>
+  <!-- Hero Image -->
+  <div class="container">
+    <div class="hero-image">
+      <img src="images/HIFI-Basket-Prototype.png" alt="High-fidelity basket prototype showing redesigned layout with save for later and improved checkout flow">
     </div>
   </div>
 
-  <!-- Lightbox Script -->
-  <script>
-    // Get all images with lightbox trigger class
-    const lightboxTriggers = document.querySelectorAll('.lightbox-trigger');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightbox-image');
-    const lightboxCaption = document.getElementById('lightbox-caption');
+  <!-- Main Content -->
+  <main class="container">
 
-    // Add click event to all trigger images
-    lightboxTriggers.forEach(img => {
-      img.addEventListener('click', () => {
-        lightboxImage.src = img.src;
-        lightboxImage.alt = img.alt;
+    <!-- Table of Contents -->
+    <nav class="toc">
+      <p class="toc-title">Contents</p>
+      <ol>
+        <li><a href="#opportunity">The Opportunity</a></li>
+        <li><a href="#research">Research Methodology</a></li>
+        <li><a href="#design">Design Process</a></li>
+        <li><a href="#testing">User Testing</a></li>
+        <li><a href="#prototype">The Prototype</a></li>
+        <li><a href="#implementation">Implementation</a></li>
+      </ol>
+    </nav>
 
-        // Get caption from next sibling if it exists
-        const caption = img.parentElement.querySelector('.image-caption');
-        if (caption) {
-          lightboxCaption.textContent = caption.textContent;
-        } else {
-          lightboxCaption.textContent = img.alt;
-        }
+    <!-- Section 01: The Opportunity -->
+    <section id="opportunity" class="section">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">The Opportunity</h2>
+      </div>
 
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      });
-    });
+      <p>In October 2025, 268,614 customers viewed their basket. Almost 120,000 of them left without clicking checkout. Only 8.79% returned organically to complete their purchase.</p>
 
-    // Close lightbox function
-    function closeLightbox() {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    }
+      <p>These aren't window shoppers. They've already decided to buy. They've found products, added them to their basket. Something at this final stage is stopping them.</p>
 
-    // Close on background click
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
-    });
+      <div class="metrics-grid">
+        <div class="metric">
+          <div class="metric-value">44.6%</div>
+          <div class="metric-label">Left without clicking checkout</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">8.79%</div>
+          <div class="metric-label">Returned organically</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">109k</div>
+          <div class="metric-label">Unclaimed baskets per month</div>
+        </div>
+      </div>
 
-    // Close on ESC key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-        closeLightbox();
-      }
-    });
-  </script>
+      <div class="pull-quote">
+        <p>"No two users organised basket features identically — a clear signal of fundamental information architecture problems."</p>
+      </div>
+
+      <p>Rather than guessing at solutions, I proposed a structured research approach using Baymard Institute methodology. The initial audit revealed our current basket experience rated as "POOR" with a net score of -2.4.</p>
+
+      <div class="metrics-highlight">
+        <div class="metric-card">
+          <div class="metric-value large">£57M</div>
+          <div class="metric-label">Annual Opportunity</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value large">-2.4</div>
+          <div class="metric-label">Baymard Net Score</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value large">5</div>
+          <div class="metric-label">High-Impact Violations</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 02: Research Methodology -->
+    <section id="research" class="section">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">Research Methodology</h2>
+      </div>
+
+      <p>I combined quantitative analysis with qualitative research methods to build a comprehensive picture of user behaviour and pain points.</p>
+
+      <h3>Baymard Audit</h3>
+
+      <p>I audited the current basket against Baymard Institute guidelines. The result: 6 high-impact violations and only 2 areas meeting best practice.</p>
+
+      <p>The major violations included no save for later functionality, no undo option for removed items, dropdown quantity selectors instead of +/- buttons, inability to edit product variants in the cart, small product thumbnails making it hard to verify items, and missing free shipping threshold information in the order summary.</p>
+
+      <p>The page did meet standards in two areas: showing the full order cost including delivery at the cart step, and keeping the discount code field collapsed behind a link to avoid distraction.</p>
+
+      <div class="content-image">
+        <img src="images/Baymard_Violations.png" alt="Current basket page annotated with Baymard violations showing 6 BAD ratings">
+        <p class="image-caption">Current basket with Baymard violations annotated</p>
+      </div>
+
+      <div class="callout callout--insight">
+        <p class="callout-label">The Baymard verdict</p>
+        <p>Current rating: Poor. The goal is to reach Perfect by addressing all identified violations in the redesign.</p>
+      </div>
+
+      <h3>Competitor Analysis</h3>
+
+      <p>16 pet retail sites analysed against 11 UX criteria. Built a tool with Claude Code to automate the process. What would have taken weeks took days.</p>
+
+      <h3>Feature Importance Rankings</h3>
+
+      <p>Asked users to rank 10 basket features by importance. Checkout CTA and Basket Totals ranked #1 and #2. Neither is prominent above the fold on our current page.</p>
+
+      <h3>Card Sorting</h3>
+
+      <p>Tested how users naturally group basket features. No two participants organised them the same way, revealing fundamental information architecture problems.</p>
+
+      <div class="callout callout--insight">
+        <p class="callout-label">Key finding from competitor analysis</p>
+        <p>Subscription options are absent from 60% of competitors. Express checkout options and delivery timing information are also weak across the market. These are opportunities to differentiate, not just catch up.</p>
+      </div>
+    </section>
+
+    <!-- Section 03: Design Process -->
+    <section id="design" class="section">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Design Process</h2>
+      </div>
+
+      <p>This isn't a redesign for redesign's sake. Every change in the prototype relates directly to Baymard best practices, competitor analysis findings, or user research. Engineering was involved from the start to ensure feasibility.</p>
+
+      <div class="process-flow">
+        <div class="process-step">
+          <span class="process-step-number">1</span>
+          <span class="process-step-label">Wireframes</span>
+        </div>
+        <span class="process-arrow">→</span>
+        <div class="process-step">
+          <span class="process-step-number">2</span>
+          <span class="process-step-label">Lo-fi Prototype</span>
+        </div>
+        <span class="process-arrow">→</span>
+        <div class="process-step">
+          <span class="process-step-number">3</span>
+          <span class="process-step-label">User Testing</span>
+        </div>
+        <span class="process-arrow">→</span>
+        <div class="process-step">
+          <span class="process-step-number">4</span>
+          <span class="process-step-label">Hi-fi Prototype</span>
+        </div>
+      </div>
+
+      <p>I started with 4-6 basic wireframes focused on information architecture before moving to interactions. The wireframes were built with detailed annotations explaining the rationale for each decision.</p>
+
+      <div class="content-image">
+        <img src="images/LOFI-BasketInteractions.png" alt="Lo-fi wireframes with annotations showing basket layout and interaction patterns">
+        <p class="image-caption">Annotated wireframes exploring information architecture and interactions</p>
+      </div>
+    </section>
+
+    <!-- Section 04: User Testing -->
+    <section id="testing" class="section">
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">User Testing</h2>
+      </div>
+
+      <p>The lo-fi prototype was tested on usertesting.com and internally. The feedback validated the approach and highlighted areas for refinement.</p>
+
+      <div class="user-quotes">
+        <div class="user-quote">
+          <p>"It's the sort of checkout, website checkout thing I would be pleased to use because it's just very intuitive."</p>
+          <span class="user-quote-attribution">— Jorvik, usertesting.com</span>
+        </div>
+        <div class="user-quote">
+          <p>"I really like the option to edit the product and change the size from within the basket rather than having to go out and find the product again."</p>
+          <span class="user-quote-attribution">— Devastated, usertesting.com</span>
+        </div>
+        <div class="user-quote">
+          <p>"From an end user perspective, it was really simple. It was really effective."</p>
+          <span class="user-quote-attribution">— Devastated, usertesting.com</span>
+        </div>
+        <div class="user-quote">
+          <p>"I was really impressed with sort of being able to add the delivery choices that you wanted. It reflected it all on the system and updated accordingly."</p>
+          <span class="user-quote-attribution">— Taketest, usertesting.com</span>
+        </div>
+      </div>
+
+      <div class="callout callout--insight">
+        <p class="callout-label">Actionable feedback</p>
+        <p>One user noted that "Save" as a label was unclear: "I wouldn't really know that would be to take the product away. Maybe if there was a clearer way of saying that with sort of language." This kind of feedback drives iteration.</p>
+      </div>
+    </section>
+
+    <!-- Section 05: The Prototype -->
+    <section id="prototype" class="section">
+      <div class="section-header">
+        <span class="section-number">05</span>
+        <h2 class="section-title">The Prototype</h2>
+      </div>
+
+      <p>The hi-fi prototype isn't a static design. It's a fully functional, accessible React build with real interactions and configurable variants for A/B testing different approaches.</p>
+
+      <p>Key features include full checkout flow, save for later, subscription setup, delivery method selection, variant/quantity editing, free delivery progress, undo functionality, and complete responsive design with accessibility built in.</p>
+
+      <div class="cta-box">
+        <h3>Try the live prototype</h3>
+        <p>The prototype is fully interactive and demonstrates the complete basket experience with configurable variants for A/B testing.</p>
+        <a href="https://snort-serene-59331563.figma.site/" class="btn" target="_blank" rel="noopener">View Live Prototype →</a>
+      </div>
+    </section>
+
+    <!-- Section 06: Implementation -->
+    <section id="implementation" class="section">
+      <div class="section-header">
+        <span class="section-number">06</span>
+        <h2 class="section-title">Implementation</h2>
+      </div>
+
+      <p>The next step is user testing on the hi-fi prototype, followed by building an implementation roadmap. This won't ship all at once. It will be integrated piece by piece, with each change measured for impact.</p>
+
+      <div class="callout callout--success">
+        <p class="callout-label">The fix for basket persistence</p>
+        <p>The technical issue that started this investigation, basket persistence across sessions, is now in development. This paves the way for the abandoned basket email that originally surfaced the problem.</p>
+      </div>
+    </section>
+
+    <!-- Page Navigation -->
+    <nav class="page-nav">
+      <a href="ace-device-case-study.html" class="page-nav-link page-nav-link--prev">
+        <span class="page-nav-label">← Previous</span>
+        <span class="page-nav-title">ACE Device</span>
+      </a>
+      <a href="index.html" class="page-nav-link page-nav-link--next">
+        <span class="page-nav-label">Back to</span>
+        <span class="page-nav-title">All Projects</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Open to senior UX roles. <a href="mailto:mattlelonek@gmail.com">Get in touch</a> or connect on <a href="https://www.linkedin.com/in/m-j-l/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
