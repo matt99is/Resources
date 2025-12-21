@@ -1,728 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How I identified and addressed a 45% basket abandonment rate through research-driven UX improvements and prototype development.">
-    <meta name="author" content="Matt Lelonek">
-    <title>Basket Optimisation Case Study | Matt Lelonek</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: #fff;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .hero .subheadline {
-            font-size: 1.25rem;
-            color: #666;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-
-        .meta-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #999;
-        }
-
-        .meta-value {
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .hero-image {
-            width: 100%;
-            margin-top: 2rem;
-        }
-
-        .hero-image img {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
-        }
-
-        /* Section styling */
-        section {
-            padding: 6rem 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        section.wide {
-            max-width: 1200px;
-        }
-
-        section.alt {
-            background: #fafafa;
-            max-width: 100%;
-        }
-
-        section.alt > * {
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        section.alt.wide > * {
-            max-width: 1200px;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #999;
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        p {
-            margin-bottom: 1.25rem;
-            color: #444;
-        }
-
-        p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Stats grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .stat-card {
-            background: #fff;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .stat-card.highlight {
-            background: #fef2f2;
-            border-color: #fecaca;
-        }
-
-        .stat-card .number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-card.highlight .number {
-            color: #dc2626;
-        }
-
-        .stat-card .label {
-            font-size: 0.875rem;
-            color: #666;
-        }
-
-        /* Image containers */
-        .image-full {
-            margin: 2rem 0;
-        }
-
-        .image-full img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-        }
-
-        .image-full.no-shadow img {
-            box-shadow: none;
-        }
-
-        .image-caption {
-            font-size: 0.875rem;
-            color: #666;
-            text-align: center;
-            margin-top: 0.75rem;
-        }
-
-        /* Before/After */
-        .before-after {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        @media (max-width: 768px) {
-            .before-after {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .before-after-item {
-            text-align: center;
-        }
-
-        .before-after-item img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-        }
-
-        .before-after-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-        }
-
-        .before-after-label.before {
-            color: #dc2626;
-        }
-
-        .before-after-label.after {
-            color: #16a34a;
-        }
-
-        /* Callout */
-        .callout {
-            background: #f0f7ff;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .callout.warning {
-            background: #fef2f2;
-            border-left: 4px solid #dc2626;
-        }
-
-        .callout.success {
-            background: #f0fdf4;
-            border-left: 4px solid #16a34a;
-        }
-
-        .callout h4 {
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .callout p {
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        /* Violations list */
-        .violations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .violation-card {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            border-radius: 8px;
-            padding: 1rem;
-        }
-
-        .violation-card.good {
-            background: #f0fdf4;
-            border-color: #bbf7d0;
-        }
-
-        .violation-card .status {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 600;
-            color: #dc2626;
-            margin-bottom: 0.5rem;
-        }
-
-        .violation-card.good .status {
-            color: #16a34a;
-        }
-
-        .violation-card h4 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .violation-card p {
-            font-size: 0.8rem;
-            color: #666;
-            margin: 0;
-        }
-
-        /* Research methods */
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .research-card {
-            background: #f8f8f8;
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .research-card h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .research-card p {
-            font-size: 0.9rem;
-            color: #666;
-            margin: 0;
-        }
-
-        /* Process steps */
-        .process-steps {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-
-        .process-step {
-            background: #f8f8f8;
-            border-radius: 8px;
-            padding: 1rem 1.5rem;
-            text-align: center;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .process-arrow {
-            color: #ccc;
-            font-size: 1.5rem;
-        }
-
-        /* Quotes */
-        .quotes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .quote-card {
-            background: #fff;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .quote-card blockquote {
-            font-size: 0.95rem;
-            font-style: italic;
-            color: #333;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-
-        .quote-card .attribution {
-            font-size: 0.8rem;
-            color: #999;
-        }
-
-        /* Highlight text */
-        .highlight {
-            background: linear-gradient(180deg, transparent 60%, #fecaca 60%);
-        }
-
-        .highlight.green {
-            background: linear-gradient(180deg, transparent 60%, #bbf7d0 60%);
-        }
-
-        /* Prototype features */
-        .features-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .feature-item .check {
-            color: #16a34a;
-            font-weight: bold;
-        }
-
-        /* CTA button */
-        .cta-button {
-            display: inline-block;
-            background: #1a1a1a;
-            color: #fff;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 500;
-            margin-top: 1rem;
-            transition: background 0.2s ease;
-        }
-
-        .cta-button:hover {
-            background: #333;
-        }
-
-        /* Opportunity callout */
-        .opportunity-box {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border-radius: 8px;
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
-        }
-
-        .opportunity-box .big-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 0.5rem;
-        }
-
-        .opportunity-box .label {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .opportunity-box .detail {
-            font-size: 0.9rem;
-            color: #444;
-        }
-
-        /* Navigation */
-        .project-nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 3rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-top: 1px solid #eee;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: #1a1a1a;
-        }
-
-        .nav-link .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #999;
-            margin-bottom: 0.25rem;
-        }
-
-        .nav-link .title {
-            font-weight: 500;
-        }
-
-        /* Two column layout */
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        @media (max-width: 768px) {
-            .two-column {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How I identified and addressed a 45% basket abandonment rate through research-driven UX improvements and prototype development.">
+  <meta name="author" content="Matt Lelonek">
+  <title>Basket Optimisation Case Study | Matt Lelonek</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="/styles/design-system.css">
 </head>
 <body>
-
-    <!-- Hero -->
-    <header class="hero">
-        <h1>Tackling a 45% Basket Abandonment Rate</h1>
-        <p class="subheadline">I spotted an opportunity, quantified it, built the business case, and designed a solution grounded in research.</p>
-        
-        <div class="meta">
-            <div class="meta-item">
-                <span class="meta-label">Role</span>
-                <span class="meta-value">UX Designer</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Timeline</span>
-                <span class="meta-value">2 months to roadmap</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Status</span>
-                <span class="meta-value">In progress, entering user testing</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Methods</span>
-                <span class="meta-value">Baymard audit, competitor analysis, user research</span>
-            </div>
-        </div>
-
-        <div class="hero-image">
-            <img src="images/HIFI-Basket-Prototype.png" alt="High-fidelity basket prototype showing redesigned layout with save for later and improved checkout flow">
-        </div>
-    </header>
-
-    <!-- The Problem -->
-    <section>
-        <p class="section-label">01 / The Problem</p>
-        <h2>Almost Half of Baskets Never Reach Checkout</h2>
-        
-        <p>In October 2025, 268,614 customers viewed their basket. Almost 120,000 of them left without clicking checkout. Only 8.79% returned organically to complete their purchase.</p>
-
-        <p>These aren't window shoppers. They've already decided to buy. They've found products, added them to their basket. Something at this final stage is stopping them.</p>
-
-        <div class="stats-grid">
-            <div class="stat-card highlight">
-                <div class="number">44.6%</div>
-                <div class="label">Left without clicking checkout</div>
-            </div>
-            <div class="stat-card">
-                <div class="number">8.79%</div>
-                <div class="label">Returned organically</div>
-            </div>
-            <div class="stat-card">
-                <div class="number">109k</div>
-                <div class="label">Unclaimed baskets per month</div>
-            </div>
-        </div>
-
-        <div class="callout warning">
-            <h4>The insight that made this clear</h4>
-            <p>First-time visitors abandon at 35%. Returning users, people who know the site and trust the brand, abandon at 48%. That's a <span class="highlight">37% higher abandonment rate for experienced users</span>. When your most familiar customers struggle more than newcomers, the problem isn't trust or product selection. It's the experience itself.</p>
-        </div>
-    </section>
-
-    <!-- The Evidence: Baymard -->
-    <section class="alt">
-        <p class="section-label">02 / The Evidence</p>
-        <h2>Failing Baseline E-commerce Standards</h2>
-
-        <p>I audited the current basket against Baymard Institute guidelines. The result: 6 high-impact violations and only 2 areas meeting best practice.</p>
-
-        <p>The major violations included no save for later functionality, no undo option for removed items, dropdown quantity selectors instead of +/- buttons, inability to edit product variants in the cart, small product thumbnails making it hard to verify items, and missing free shipping threshold information in the order summary.</p>
-
-        <p>The page did meet standards in two areas: showing the full order cost including delivery at the cart step, and keeping the discount code field collapsed behind a link to avoid distraction.</p>
-
-        <div class="image-full">
-            <img src="images/Baymard_Violations.png" alt="Current basket page annotated with Baymard violations showing 6 BAD ratings">
-            <p class="image-caption">Current basket with Baymard violations annotated</p>
-        </div>
-
-        <div class="callout warning">
-            <h4>The Baymard verdict</h4>
-            <p>Current rating: Poor. The goal is to reach Perfect by addressing all identified violations in the redesign.</p>
-        </div>
-    </section>
-
-    <!-- The Evidence: Research -->
-    <section>
-        <p class="section-label">03 / The Research</p>
-        <h2>Building the Case With Evidence</h2>
-
-        <p>The Baymard audit showed we were failing standards. But I needed to understand how users actually think about the basket and what competitors were doing. I ran three additional research streams.</p>
-
-        <div class="research-grid">
-            <div class="research-card">
-                <h3>Competitor Analysis</h3>
-                <p>16 pet retail sites analysed against 11 UX criteria. Built a tool with Claude Code to automate the process. What would have taken weeks took days.</p>
-            </div>
-            <div class="research-card">
-                <h3>Feature Importance Rankings</h3>
-                <p>Asked users to rank 10 basket features by importance. Checkout CTA and Basket Totals ranked #1 and #2. Neither is prominent above the fold on our current page.</p>
-            </div>
-            <div class="research-card">
-                <h3>Card Sorting</h3>
-                <p>Tested how users naturally group basket features. No two participants organised them the same way, revealing fundamental information architecture problems.</p>
-            </div>
-        </div>
-
-        <div class="callout">
-            <h4>Key finding from competitor analysis</h4>
-            <p>Subscription options are absent from 60% of competitors. Express checkout options and delivery timing information are also weak across the market. These are opportunities to differentiate, not just catch up.</p>
-        </div>
-    </section>
-
-    <!-- The Approach -->
-    <section class="alt">
-        <p class="section-label">04 / The Approach</p>
-        <h2>Every Change Traced to Evidence</h2>
-
-        <p>This isn't a redesign for redesign's sake. Every change in the prototype relates directly to Baymard best practices, competitor analysis findings, or user research. Engineering was involved from the start to ensure feasibility.</p>
-
-        <div class="process-steps">
-            <div class="process-step">Wireframes</div>
-            <span class="process-arrow">→</span>
-            <div class="process-step">Lo-fi Prototype</div>
-            <span class="process-arrow">→</span>
-            <div class="process-step">User Testing</div>
-            <span class="process-arrow">→</span>
-            <div class="process-step">Hi-fi Prototype</div>
-        </div>
-
-        <p>I started with 4-6 basic wireframes focused on information architecture before moving to interactions. The wireframes were built with detailed annotations explaining the rationale for each decision.</p>
-
-        <div class="image-full">
-            <img src="images/LOFI-BasketInteractions.png" alt="Lo-fi wireframes with annotations showing basket layout and interaction patterns">
-            <p class="image-caption">Annotated wireframes exploring information architecture and interactions</p>
-        </div>
-    </section>
-
-    <!-- User Testing -->
-    <section>
-        <p class="section-label">05 / User Feedback</p>
-        <h2>Testing With Real Users</h2>
-
-        <p>The lo-fi prototype was tested on usertesting.com and internally. The feedback validated the approach and highlighted areas for refinement.</p>
-
-        <div class="quotes-grid">
-            <div class="quote-card">
-                <blockquote>"It's the sort of checkout, website checkout thing I would be pleased to use because it's just very intuitive."</blockquote>
-                <div class="attribution">— Jorvik, usertesting.com</div>
-            </div>
-            <div class="quote-card">
-                <blockquote>"I really like the option to edit the product and change the size from within the basket rather than having to go out and find the product again."</blockquote>
-                <div class="attribution">— Devastated, usertesting.com</div>
-            </div>
-            <div class="quote-card">
-                <blockquote>"From an end user perspective, it was really simple. It was really effective."</blockquote>
-                <div class="attribution">— Devastated, usertesting.com</div>
-            </div>
-            <div class="quote-card">
-                <blockquote>"I was really impressed with sort of being able to add the delivery choices that you wanted. It reflected it all on the system and updated accordingly."</blockquote>
-                <div class="attribution">— Taketest, usertesting.com</div>
-            </div>
-        </div>
-
-        <div class="callout">
-            <h4>Actionable feedback</h4>
-            <p>One user noted that "Save" as a label was unclear: "I wouldn't really know that would be to take the product away. Maybe if there was a clearer way of saying that with sort of language." This kind of feedback drives iteration.</p>
-        </div>
-    </section>
-
-    <!-- The Prototype -->
-    <section class="alt">
-        <p class="section-label">06 / The Prototype</p>
-        <h2>A Testable Product, Not Just a Mockup</h2>
-
-        <p>The hi-fi prototype isn't a static design. It's a fully functional, accessible React build with real interactions and configurable variants for A/B testing different approaches.</p>
-
-        <p>Key features include full checkout flow, save for later, subscription setup, delivery method selection, variant/quantity editing, free delivery progress, undo functionality, and complete responsive design with accessibility built in.</p>
-
-        <div class="callout">
-            <h4>Try the live prototype</h4>
-            <p>The prototype is fully interactive and demonstrates the complete basket experience with configurable variants for A/B testing.</p>
-            <a href="https://snort-serene-59331563.figma.site/" class="cta-button" target="_blank" style="display: inline-block; margin-top: 1rem;">View Live Prototype →</a>
-        </div>
-    </section>
-
-    <!-- What's Next -->
-    <section>
-        <p class="section-label">07 / What's Next</p>
-        <h2>Testing and Phased Implementation</h2>
-
-        <p>The next step is user testing on the hi-fi prototype, followed by building an implementation roadmap. This won't ship all at once. It will be integrated piece by piece, with each change measured for impact.</p>
-
-        <div class="callout success">
-            <h4>The fix for basket persistence</h4>
-            <p>The technical issue that started this investigation, basket persistence across sessions, is now in development. This paves the way for the abandoned basket email that originally surfaced the problem.</p>
-        </div>
-    </section>
-
-    <!-- The Numbers -->
-    <section class="alt">
-        <p class="section-label">08 / The Opportunity</p>
-        <h2>What This Could Mean</h2>
-
-        <div class="opportunity-box">
-            <div class="big-number">£57M</div>
-            <div class="label">in abandoned baskets annually</div>
-            <div class="detail">Even a modest 2% improvement = £2.81M in annual revenue<br>5,372 additional monthly conversions</div>
-        </div>
-
-        <p style="text-align: center; max-width: 600px; margin: 0 auto;">These are customers who've already decided to buy. The opportunity isn't about attracting new visitors. It's about removing friction for people who are ready to purchase.</p>
-    </section>
-
-    <!-- Navigation -->
-    <nav class="project-nav">
-        <a href="ace-device-case-study.html" class="nav-link">
-            <div class="label">← Previous</div>
-            <div class="title">ACE Device</div>
-        </a>
-        <a href="index.html" class="nav-link" style="text-align: right;">
-            <div class="label">Back to</div>
-            <div class="title">All Projects</div>
-        </a>
+  <!-- Page Header -->
+  <header class="page-header">
+    <nav class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/#case-studies">Case Studies</a>
+      <span>/</span>
+      <span>Basket Optimisation</span>
     </nav>
 
+    <h1 class="page-header__title">Tackling a 45% Basket Abandonment Rate</h1>
+    <p class="page-header__subtitle">Spotted an opportunity, quantified it, built the business case, and designed a solution grounded in research.</p>
+
+    <div class="meta-row">
+      <div class="meta-item">
+        <span class="meta-item__label">Role</span>
+        <span class="meta-item__value">UX Designer</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-item__label">Timeline</span>
+        <span class="meta-item__value">2 months to roadmap</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-item__label">Status</span>
+        <span class="meta-item__value">In progress, entering user testing</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-item__label">Methods</span>
+        <span class="meta-item__value">Baymard audit, competitor analysis, user research</span>
+      </div>
+    </div>
+
+    <div class="image-container">
+      <img src="images/HIFI-Basket-Prototype.png" alt="High-fidelity basket prototype showing redesigned layout with save for later and improved checkout flow" class="lightbox-trigger">
+      <p class="image-caption">High-fidelity basket prototype</p>
+    </div>
+  </header>
+
+  <!-- Section 01: The Problem -->
+  <section class="content-section">
+    <div class="section-number">
+      <span class="section-number__num">01</span>
+      <h2 class="section-number__title">The Problem</h2>
+    </div>
+
+    <p>In October 2025, 268,614 customers viewed their basket. Almost 120,000 of them left without clicking checkout. Only 8.79% returned organically to complete their purchase.</p>
+
+    <p>These aren't window shoppers. They've already decided to buy. They've found products, added them to their basket. Something at this final stage is stopping them.</p>
+
+    <div class="metrics-grid">
+      <div class="metric">
+        <span class="metric__value" style="color: var(--status-error);">44.6%</span>
+        <span class="metric__label">Left without clicking checkout</span>
+      </div>
+      <div class="metric">
+        <span class="metric__value">8.79%</span>
+        <span class="metric__label">Returned organically</span>
+      </div>
+      <div class="metric">
+        <span class="metric__value">109k</span>
+        <span class="metric__label">Unclaimed baskets per month</span>
+      </div>
+    </div>
+
+    <div class="callout callout--warning">
+      <span class="callout__label">The insight that made this clear</span>
+      <p>First-time visitors abandon at 35%. Returning users, people who know the site and trust the brand, abandon at 48%. That's a 37% higher abandonment rate for experienced users. When your most familiar customers struggle more than newcomers, the problem isn't trust or product selection. It's the experience itself.</p>
+    </div>
+  </section>
+
+  <!-- Section 02: The Evidence -->
+  <section class="content-section content-section--alt">
+    <div class="section-number">
+      <span class="section-number__num">02</span>
+      <h2 class="section-number__title">The Evidence</h2>
+    </div>
+
+    <p>I audited the current basket against Baymard Institute guidelines. The result: 6 high-impact violations and only 2 areas meeting best practice.</p>
+
+    <p>The major violations included no save for later functionality, no undo option for removed items, dropdown quantity selectors instead of +/- buttons, inability to edit product variants in the cart, small product thumbnails making it hard to verify items, and missing free shipping threshold information in the order summary.</p>
+
+    <p>The page did meet standards in two areas: showing the full order cost including delivery at the cart step, and keeping the discount code field collapsed behind a link to avoid distraction.</p>
+
+    <div class="image-container">
+      <img src="images/Baymard_Violations.png" alt="Current basket page annotated with Baymard violations showing 6 BAD ratings" class="lightbox-trigger">
+      <p class="image-caption">Current basket with Baymard violations annotated</p>
+    </div>
+
+    <div class="callout callout--warning">
+      <span class="callout__label">The Baymard verdict</span>
+      <p>Current rating: Poor. The goal is to reach Perfect by addressing all identified violations in the redesign.</p>
+    </div>
+  </section>
+
+  <!-- Section 03: The Research -->
+  <section class="content-section">
+    <div class="section-number">
+      <span class="section-number__num">03</span>
+      <h2 class="section-number__title">The Research</h2>
+    </div>
+
+    <p>The Baymard audit showed we were failing standards. But I needed to understand how users actually think about the basket and what competitors were doing. I ran three additional research streams.</p>
+
+    <div class="research-grid">
+      <div class="research-card">
+        <h3 class="research-card__title">Competitor Analysis</h3>
+        <p class="research-card__description">16 pet retail sites analysed against 11 UX criteria. Built a tool with Claude Code to automate the process. What would have taken weeks took days.</p>
+      </div>
+      <div class="research-card">
+        <h3 class="research-card__title">Feature Importance Rankings</h3>
+        <p class="research-card__description">Asked users to rank 10 basket features by importance. Checkout CTA and Basket Totals ranked #1 and #2. Neither is prominent above the fold on our current page.</p>
+      </div>
+      <div class="research-card">
+        <h3 class="research-card__title">Card Sorting</h3>
+        <p class="research-card__description">Tested how users naturally group basket features. No two participants organised them the same way, revealing fundamental information architecture problems.</p>
+      </div>
+    </div>
+
+    <div class="callout callout--info">
+      <span class="callout__label">Key finding from competitor analysis</span>
+      <p>Subscription options are absent from 60% of competitors. Express checkout options and delivery timing information are also weak across the market. These are opportunities to differentiate, not just catch up.</p>
+    </div>
+  </section>
+
+  <!-- Section 04: The Approach -->
+  <section class="content-section content-section--alt">
+    <div class="section-number">
+      <span class="section-number__num">04</span>
+      <h2 class="section-number__title">The Approach</h2>
+    </div>
+
+    <p>This isn't a redesign for redesign's sake. Every change in the prototype relates directly to Baymard best practices, competitor analysis findings, or user research. Engineering was involved from the start to ensure feasibility.</p>
+
+    <div class="process-steps">
+      <div class="process-step">Wireframes</div>
+      <span class="process-arrow">→</span>
+      <div class="process-step">Lo-fi Prototype</div>
+      <span class="process-arrow">→</span>
+      <div class="process-step">User Testing</div>
+      <span class="process-arrow">→</span>
+      <div class="process-step">Hi-fi Prototype</div>
+    </div>
+
+    <p>I started with 4-6 basic wireframes focused on information architecture before moving to interactions. The wireframes were built with detailed annotations explaining the rationale for each decision.</p>
+
+    <div class="image-container">
+      <img src="images/LOFI-BasketInteractions.png" alt="Lo-fi wireframes with annotations showing basket layout and interaction patterns" class="lightbox-trigger">
+      <p class="image-caption">Annotated wireframes exploring information architecture and interactions</p>
+    </div>
+  </section>
+
+  <!-- Section 05: User Feedback -->
+  <section class="content-section">
+    <div class="section-number">
+      <span class="section-number__num">05</span>
+      <h2 class="section-number__title">User Feedback</h2>
+    </div>
+
+    <p>The lo-fi prototype was tested on usertesting.com and internally. The feedback validated the approach and highlighted areas for refinement.</p>
+
+    <div class="quote-grid">
+      <div class="quote-card">
+        <blockquote class="quote-card__text">"It's the sort of checkout, website checkout thing I would be pleased to use because it's just very intuitive."</blockquote>
+        <div class="quote-card__attribution">— Jorvik, usertesting.com</div>
+      </div>
+      <div class="quote-card">
+        <blockquote class="quote-card__text">"I really like the option to edit the product and change the size from within the basket rather than having to go out and find the product again."</blockquote>
+        <div class="quote-card__attribution">— Devastated, usertesting.com</div>
+      </div>
+      <div class="quote-card">
+        <blockquote class="quote-card__text">"From an end user perspective, it was really simple. It was really effective."</blockquote>
+        <div class="quote-card__attribution">— Devastated, usertesting.com</div>
+      </div>
+      <div class="quote-card">
+        <blockquote class="quote-card__text">"I was really impressed with sort of being able to add the delivery choices that you wanted. It reflected it all on the system and updated accordingly."</blockquote>
+        <div class="quote-card__attribution">— Taketest, usertesting.com</div>
+      </div>
+    </div>
+
+    <div class="callout callout--info">
+      <span class="callout__label">Actionable feedback</span>
+      <p>One user noted that "Save" as a label was unclear: "I wouldn't really know that would be to take the product away. Maybe if there was a clearer way of saying that with sort of language." This kind of feedback drives iteration.</p>
+    </div>
+  </section>
+
+  <!-- Section 06: The Prototype -->
+  <section class="content-section content-section--alt">
+    <div class="section-number">
+      <span class="section-number__num">06</span>
+      <h2 class="section-number__title">The Prototype</h2>
+    </div>
+
+    <p>The hi-fi prototype isn't a static design. It's a fully functional, accessible React build with real interactions and configurable variants for A/B testing different approaches.</p>
+
+    <p>Key features include full checkout flow, save for later, subscription setup, delivery method selection, variant/quantity editing, free delivery progress, undo functionality, and complete responsive design with accessibility built in.</p>
+
+    <div class="callout callout--tip">
+      <span class="callout__label">Try the live prototype</span>
+      <p>The prototype is fully interactive and demonstrates the complete basket experience with configurable variants for A/B testing.</p>
+      <a href="https://snort-serene-59331563.figma.site/" class="btn btn--primary mt-4" target="_blank">View Live Prototype →</a>
+    </div>
+  </section>
+
+  <!-- Section 07: What's Next -->
+  <section class="content-section">
+    <div class="section-number">
+      <span class="section-number__num">07</span>
+      <h2 class="section-number__title">What's Next</h2>
+    </div>
+
+    <p>The next step is user testing on the hi-fi prototype, followed by building an implementation roadmap. This won't ship all at once. It will be integrated piece by piece, with each change measured for impact.</p>
+
+    <div class="callout callout--tip">
+      <span class="callout__label">The fix for basket persistence</span>
+      <p>The technical issue that started this investigation, basket persistence across sessions, is now in development. This paves the way for the abandoned basket email that originally surfaced the problem.</p>
+    </div>
+  </section>
+
+  <!-- Section 08: The Opportunity -->
+  <section class="content-section content-section--alt">
+    <div class="section-number">
+      <span class="section-number__num">08</span>
+      <h2 class="section-number__title">The Opportunity</h2>
+    </div>
+
+    <div class="opportunity-box">
+      <div class="opportunity-box__number">£57M</div>
+      <div class="opportunity-box__label">in abandoned baskets annually</div>
+      <div class="opportunity-box__detail">Even a modest 2% improvement = £2.81M in annual revenue<br>5,372 additional monthly conversions</div>
+    </div>
+
+    <p style="text-align: center; max-width: var(--max-width-prose); margin: 0 auto;">These are customers who've already decided to buy. The opportunity isn't about attracting new visitors. It's about removing friction for people who are ready to purchase.</p>
+  </section>
+
+  <!-- Project Navigation -->
+  <nav class="project-nav">
+    <a href="ace-device-case-study.html" class="project-nav__link">
+      <div class="project-nav__label">← Previous</div>
+      <div class="project-nav__title">ACE Device</div>
+    </a>
+    <a href="index.html" class="project-nav__link text-right">
+      <div class="project-nav__label">Back to</div>
+      <div class="project-nav__title">All Projects</div>
+    </a>
+  </nav>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox__content">
+      <button class="lightbox__close" onclick="closeLightbox()">×</button>
+      <img src="" alt="" class="lightbox__image" id="lightbox-image">
+      <p class="lightbox__caption" id="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- Lightbox Script -->
+  <script>
+    // Get all images with lightbox trigger class
+    const lightboxTriggers = document.querySelectorAll('.lightbox-trigger');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    // Add click event to all trigger images
+    lightboxTriggers.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt;
+
+        // Get caption from next sibling if it exists
+        const caption = img.parentElement.querySelector('.image-caption');
+        if (caption) {
+          lightboxCaption.textContent = caption.textContent;
+        } else {
+          lightboxCaption.textContent = img.alt;
+        }
+
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Close lightbox function
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close on background click
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  </script>
 </body>
 </html>
