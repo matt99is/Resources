@@ -1460,13 +1460,13 @@ a.card {
 
 /* Callout variants */
 .callout--insight {
-  background: #F5F3FF;
-  border-left: 3px solid #7C3AED;
+  background: var(--accent-light);
+  border-left: 3px solid var(--accent-primary);
 }
 
 .callout--success {
-  background: #ECFDF5;
-  border-left: 3px solid var(--status-success);
+  background: var(--accent-light);
+  border-left: 3px solid var(--accent-primary);
 }
 
 .callout-label {
@@ -1479,11 +1479,11 @@ a.card {
 }
 
 .callout--insight .callout-label {
-  color: #7C3AED;
+  color: var(--accent-primary);
 }
 
 .callout--success .callout-label {
-  color: var(--status-success);
+  color: var(--accent-primary);
 }
 
 .callout p:last-child {
