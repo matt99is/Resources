@@ -106,7 +106,7 @@
 
   /* --- Layout --- */
   --max-width-prose: 65ch;
-  --max-width-content: 800px;
+  --max-width-content: 1040px;
   --max-width-wide: 1200px;
   --sidebar-width: 280px;
 
@@ -810,7 +810,7 @@ a.card {
 }
 
 .container {
-  max-width: 800px;
+  max-width: var(--max-width-content);
   margin: 0 auto;
   padding: 0 var(--space-6);
 }
