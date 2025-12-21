@@ -442,6 +442,7 @@ a.card {
   grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
   gap: var(--space-6);
   margin: var(--space-6) 0;
+  width: 100%;
 }
 
 /* Score badges */
@@ -904,7 +905,7 @@ a.card {
 .page-header {
   max-width: var(--max-width-content);
   margin: 0 auto;
-  padding: var(--space-12) var(--space-6);
+  padding: var(--space-12) var(--space-6) var(--space-8) var(--space-6);
 }
 
 .page-header__title {
@@ -951,13 +952,16 @@ a.card {
 /* Image with lightbox */
 .image-container {
   margin: var(--space-8) 0;
+  max-width: 100%;
 }
 
 .image-container img {
   width: 100%;
+  max-width: 100%;
   border-radius: var(--radius-lg);
   cursor: pointer;
   transition: opacity 0.2s ease;
+  display: block;
 }
 
 .image-container img:hover {
@@ -1038,23 +1042,25 @@ a.card {
 
 /* Content sections */
 .content-section {
-  padding: var(--space-12) 0;
-}
-
-.content-section > * {
-  max-width: var(--max-width-prose);
+  padding: var(--space-12) var(--space-6);
+  max-width: var(--max-width-content);
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--space-6);
-  padding-right: var(--space-6);
-}
-
-.content-section--wide > * {
-  max-width: var(--max-width-wide);
 }
 
 .content-section--alt {
   background: var(--bg-secondary);
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.content-section--alt > * {
+  max-width: var(--max-width-content);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
 }
 
 /* Quote grid */
@@ -1063,6 +1069,7 @@ a.card {
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: var(--space-6);
   margin: var(--space-8) 0;
+  width: 100%;
 }
 
 .quote-card {
@@ -1091,6 +1098,7 @@ a.card {
   grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
   gap: var(--space-6);
   margin: var(--space-8) 0;
+  width: 100%;
 }
 
 .research-card {
