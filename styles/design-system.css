@@ -1989,6 +1989,7 @@ a.card {
   margin: var(--space-4) 0;
   overflow-x: auto;
   line-height: var(--leading-relaxed);
+  white-space: pre-wrap;
 }
 
 .prompt-block__label {
