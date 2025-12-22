@@ -19,6 +19,26 @@ Complete reference for all design system components with usage examples and best
 
 ## Page Structure
 
+### Breadcrumb Navigation
+**Required at the top of every page** for consistent navigation.
+
+```html
+<!-- Breadcrumb -->
+<div class="container">
+  <nav class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>→</span>
+    <span>Page Title</span>
+  </nav>
+</div>
+```
+
+**Pattern:**
+- Always starts with "Home" link to `index.html`
+- Uses arrow separator (`→`)
+- Current page is plain text (not a link)
+- Wrapped in semantic `<nav>` element
+
 ### Hero Section
 Used at the top of every page for title, subtitle, and metadata.
 
