@@ -699,58 +699,26 @@ Provide a summary of changes made and any issues found.</div>
 Don't refactor or change functionality.</div>
         </section>
 
-        <!-- Footer -->
-        <footer class="site-footer">
-            <p>Figma Make Workflow Guide • Version 2.0</p>
-            <p><a href="index.html">Back to Home</a></p>
-        </footer>
     </div>
 
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>Open to senior UX roles. <a href="mailto:mattlelonek@gmail.com">Get in touch</a> or connect on <a href="https://www.linkedin.com/in/m-j-l/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+        </div>
+    </footer>
+
     <!-- Lightbox -->
-    <div id="lightbox" class="lightbox">
+    <div class="lightbox" id="lightbox">
         <div class="lightbox__content">
             <button class="lightbox__close" aria-label="Close lightbox">&times;</button>
             <img class="lightbox__image" src="" alt="">
-            <div class="lightbox__caption"></div>
+            <p class="lightbox__caption"></p>
         </div>
     </div>
 
     <!-- Lightbox Script -->
-    <script>
-        // Lightbox functionality
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = lightbox.querySelector('.lightbox__image');
-        const lightboxCaption = lightbox.querySelector('.lightbox__caption');
-        const lightboxClose = lightbox.querySelector('.lightbox__close');
+    <script src="/scripts/lightbox.js"></script>
 
-        // Add click handlers to all images with lightbox-trigger class
-        document.querySelectorAll('.lightbox-trigger').forEach(img => {
-            img.addEventListener('click', function() {
-                lightboxImg.src = this.src;
-                lightboxImg.alt = this.alt;
-                lightboxCaption.textContent = this.alt || '';
-                lightbox.classList.add('active');
-            });
-        });
-
-        // Close lightbox
-        lightboxClose.addEventListener('click', () => {
-            lightbox.classList.remove('active');
-        });
-
-        // Close on background click
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.classList.remove('active');
-            }
-        });
-
-        // Close on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                lightbox.classList.remove('active');
-            }
-        });
-    </script>
 </body>
 </html>
