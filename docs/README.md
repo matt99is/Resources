@@ -84,6 +84,24 @@ Complete guide to creating and maintaining pages in the Resources site.
 
 ---
 
+### 5. UXMATURITY_INTEGRATION.md
+**Purpose:** UX Maturity Analysis report publishing and index updating
+
+**What's inside:**
+- How UXMaturityAnalysis project publishes reports to Resources
+- Automated script for updating index.html
+- Directory structure and naming conventions
+- Configuration and troubleshooting
+- Manual update procedures
+
+**When to use:**
+- When publishing new UX analysis reports
+- When the index needs updating with new reports
+- When troubleshooting integration issues
+- When setting up the integration for the first time
+
+---
+
 ## Templates
 
 All templates are located in `/templates/` directory:
