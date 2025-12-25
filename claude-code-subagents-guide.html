@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A practical guide to running multiple specialised agents across all your projects with Claude Code.">
+    <meta name="author" content="Matt Lelonek">
+    <title>Claude Code Subagents Guide | Matt Lelonek</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="/styles/design-system.css">
+</head>
+<body>
+    <!-- Breadcrumb -->
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>→</span>
+            <span>Claude Code Subagents</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="overline">Guide</div>
+            <h1 class="hero__title">Claude Code Subagents</h1>
+            <p class="hero-subtitle">A practical guide to running multiple specialised agents across all your projects.</p>
+        </section>
+
+        <!-- Table of Contents -->
+        <nav class="toc">
+            <h2 class="toc-title">Contents</h2>
+            <ol>
+                <li><a href="#what">What are subagents?</a></li>
+                <li><a href="#why">Why bother?</a></li>
+                <li><a href="#setup">Setting up global subagents</a></li>
+                <li><a href="#agents">Recommended starter agents</a></li>
+                <li><a href="#usage">How to use them</a></li>
+                <li><a href="#tips">Tips and gotchas</a></li>
+            </ol>
+        </nav>
+
+        <section id="what" class="content-section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">What are subagents?</h2>
+            </div>
+
+            <p>Subagents are specialised Claude Code instances that run in their own context window. Each one has a specific job, specific tools, and specific instructions.</p>
+
+            <div class="callout callout--info">
+                <div class="callout__label">The mental model</div>
+                <p>Claude Code is the project manager. Subagents are specialists on the team. The manager delegates clearly-worded tasks, the specialists do focused work, and results come back without cluttering the main conversation.</p>
+            </div>
+
+            <p>They're defined as markdown files with YAML frontmatter. Put them in <code>~/.claude/agents/</code> for global access, or <code>.claude/agents/</code> for project-specific agents.</p>
+        </section>
+
+        <section id="why" class="content-section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Why bother?</h2>
+            </div>
+
+            <h3>Context preservation</h3>
+            <p>Heavy research or exploration tasks eat tokens. Offloading to a subagent keeps your primary conversation lean. The subagent does the digging, returns the relevant findings, and the intermediate noise stays out of your main thread.</p>
+
+            <h3>Parallelisation</h3>
+            <p>Run multiple subagents simultaneously on different parts of a codebase. Review, refactor analysis, and documentation can happen concurrently.</p>
+
+            <h3>Consistency</h3>
+            <p>A well-defined subagent follows the same process every time. Your "code reviewer" applies the same standards whether you're working on Python scripts or Android apps.</p>
+
+            <h3>Tool restriction</h3>
+            <p>Subagents can be limited to specific tools. A "doc-reviewer" might only have Read and Grep access—it can analyse but never accidentally modify files.</p>
+
+            <div class="callout callout--warning">
+                <div class="callout__label">Worth noting</div>
+                <p>Subagents burn through your usage faster. Running parallel agents on a Pro plan will hit limits quickly. Max subscription or API billing is more practical for heavy use.</p>
+            </div>
+        </section>
+
+        <section id="setup" class="content-section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Setting up global subagents</h2>
+            </div>
+
+            <div class="step-grid">
+                <div class="step-item">
+                    <div class="step-item__number">1</div>
+                    <div class="step-item__content">
+                        <h4>Create the directory</h4>
+                        <p>Global agents live in your home directory.</p>
+                    </div>
+                </div>
+            </div>
+
+            <pre><code>mkdir -p ~/.claude/agents</code></pre>
+
+            <div class="step-grid">
+                <div class="step-item">
+                    <div class="step-item__number">2</div>
+                    <div class="step-item__content">
+                        <h4>Create agent files</h4>
+                        <p>Each agent is a <code>.md</code> file with YAML frontmatter defining its configuration.</p>
+                    </div>
+                </div>
+            </div>
+
+            <pre><code><span class="comment"># ~/.claude/agents/codebase-reviewer.md</span>
+
+<span class="keyword">---</span>
+<span class="property">name:</span> <span class="string">codebase-reviewer</span>
+<span class="property">description:</span> <span class="string">Reviews code structure, identifies issues, and suggests improvements. Use when starting a project, onboarding to unfamiliar code, or before major changes.</span>
+<span class="property">tools:</span> <span class="string">Read, Grep, Glob</span>
+<span class="keyword">---</span>
+
+You are a code architecture analyst. Your job is to review codebases and provide actionable insights.
+
+<span class="comment">## What you do</span>
+- Analyse code structure and organisation
+- Identify patterns and anti-patterns
+- Flag potential issues (complexity, duplication, unclear naming)
+- Suggest improvements with specific file/line references
+
+<span class="comment">## What you don't do</span>
+- Make changes to files
+- Refactor code (that's a separate step)
+- Give vague feedback ("this could be better")
+
+<span class="comment">## Output format</span>
+Provide findings as:
+1. **Summary** - One paragraph overview
+2. **Issues** - Specific problems with file:line references
+3. **Recommendations** - Prioritised list of improvements</code></pre>
+
+            <div class="step-grid">
+                <div class="step-item">
+                    <div class="step-item__number">3</div>
+                    <div class="step-item__content">
+                        <h4>Verify they're available</h4>
+                        <p>Run <code>/agents</code> in Claude Code to see your available subagents.</p>
+                    </div>
+                </div>
+            </div>
+
+            <pre><code><span class="folder">~/.claude/</span>
+└── <span class="folder">agents/</span>
+    ├── <span class="file">codebase-reviewer.md</span>
+    ├── <span class="file">doc-updater.md</span>
+    ├── <span class="file">refactor-advisor.md</span>
+    ├── <span class="file">python-specialist.md</span>
+    └── <span class="file">prototype-architect.md</span></code></pre>
+        </section>
+
+        <section id="agents" class="content-section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">Recommended starter agents</h2>
+            </div>
+
+            <p>These cover the most common recurring tasks. Start with two or three, refine based on what actually helps.</p>
+
+            <div class="feature-card">
+                <h4 class="feature-card__title">codebase-reviewer</h4>
+                <p class="feature-card__description">Reviews code structure, identifies issues, and suggests improvements without making changes. Read-only access keeps it safe for exploration.</p>
+                <p class="feature-card__meta">Use when: Starting any project, understanding unfamiliar code, pre-refactor assessment</p>
+            </div>
+
+            <div class="feature-card">
+                <h4 class="feature-card__title">doc-updater</h4>
+                <p class="feature-card__description">Updates and creates documentation—README files, ARCHITECTURE.md, inline comments, API docs. Focuses on accuracy and clarity over comprehensiveness.</p>
+                <p class="feature-card__meta">Use when: After changes, onboarding future-you, before sharing code</p>
+            </div>
+
+            <div class="feature-card">
+                <h4 class="feature-card__title">refactor-advisor</h4>
+                <p class="feature-card__description">Analyses code for refactoring opportunities without making changes. Provides specific recommendations with effort/impact ratings. Think before act.</p>
+                <p class="feature-card__meta">Use when: Technical debt assessment, before major feature work</p>
+            </div>
+
+            <div class="feature-card">
+                <h4 class="feature-card__title">python-specialist</h4>
+                <p class="feature-card__description">Python-specific patterns, best practices, testing, type hints, packaging. Knows the ecosystem (pytest, black, mypy, poetry).</p>
+                <p class="feature-card__meta">Use when: Python scripts, automation tools, data processing</p>
+            </div>
+
+            <div class="feature-card">
+                <h4 class="feature-card__title">prototype-architect</h4>
+                <p class="feature-card__description">Breaks complex prototype work into smaller, manageable chunks. Maintains ARCHITECTURE.md to speed up future changes. Addresses the "Claude Code is slow on complex prototypes" problem by front-loading structure.</p>
+                <p class="feature-card__meta">Use when: Figma Make prototypes, complex React apps, before any large change</p>
+            </div>
+
+            <div class="feature-card">
+                <h4 class="feature-card__title">android-specialist</h4>
+                <p class="feature-card__description">Kotlin/Android patterns, Jetpack Compose, XML layouts, Gradle configuration. Knows Material Design 3 and Android-specific accessibility requirements.</p>
+                <p class="feature-card__meta">Use when: Android app development, Kotlin code review</p>
+            </div>
+        </section>
+
+        <section id="usage" class="content-section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">How to use them</h2>
+            </div>
+
+            <h3>Explicit invocation</h3>
+            <p>Tell Claude Code to use a specific subagent:</p>
+            <pre><code>"Use the codebase-reviewer subagent to analyse this project"
+
+"Run the doc-updater to refresh the README after these changes"
+
+"Have the refactor-advisor look at the authentication module"</code></pre>
+
+            <h3>Automatic invocation</h3>
+            <p>If your subagent's <code>description</code> field is clear enough, Claude Code may invoke it automatically when the task matches. Writing good descriptions matters:</p>
+
+            <pre><code><span class="comment"># Good - specific trigger conditions</span>
+<span class="property">description:</span> <span class="string">Use PROACTIVELY when starting a new project or when code changes might impact architecture.</span>
+
+<span class="comment"># Less good - vague</span>
+<span class="property">description:</span> <span class="string">Reviews code and provides feedback.</span></code></pre>
+
+            <h3>Parallel execution</h3>
+            <p>Request multiple subagents at once:</p>
+            <pre><code>"Explore this codebase using 3 parallel tasks:
+- codebase-reviewer on /src
+- doc-updater to audit existing documentation
+- refactor-advisor on the utils directory"</code></pre>
+        </section>
+
+        <section id="tips" class="content-section">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">Tips and gotchas</h2>
+            </div>
+
+            <h3>Start narrow</h3>
+            <p>Begin with 2-3 agents. See what actually helps before building a library of 20 specialists you never use.</p>
+
+            <h3>Tool restrictions matter</h3>
+            <p>A subagent with <code>tools: Read, Grep, Glob</code> can analyse but not modify. This is intentional—review agents shouldn't accidentally "fix" things.</p>
+
+            <pre><code><span class="comment"># Read-only (safe for exploration)</span>
+<span class="property">tools:</span> <span class="string">Read, Grep, Glob</span>
+
+<span class="comment"># Can modify files</span>
+<span class="property">tools:</span> <span class="string">Read, Write, Grep, Glob</span>
+
+<span class="comment"># Full access including shell</span>
+<span class="property">tools:</span> <span class="string">Read, Write, Bash, Grep, Glob</span></code></pre>
+
+            <h3>Project-level overrides</h3>
+            <p>Put a subagent with the same name in <code>.claude/agents/</code> to override the global version for that project. Useful when a Python project needs different standards than your Android apps.</p>
+
+            <h3>The review bottleneck</h3>
+            <p>Running 5 agents in parallel sounds productive until you have 5 sets of changes to review. The bottleneck is your attention, not Claude's speed. Parallelise research and read-only analysis freely; be more conservative with parallel modification tasks.</p>
+
+            <h3>Cost awareness</h3>
+            <p>Each subagent consumes tokens independently. A "quick" parallel exploration across 4 directories might burn through more usage than a careful sequential review. Match the approach to the task.</p>
+        </section>
+
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2 class="section-title">Full agent file examples</h2>
+            </div>
+
+            <p>Copy these as starting points. Refine the instructions based on what works for your projects.</p>
+
+            <h3>codebase-reviewer.md</h3>
+            <pre><code><span class="keyword">---</span>
+<span class="property">name:</span> <span class="string">codebase-reviewer</span>
+<span class="property">description:</span> <span class="string">Reviews code structure and identifies issues. Use when starting a project, understanding unfamiliar code, or before major changes.</span>
+<span class="property">tools:</span> <span class="string">Read, Grep, Glob</span>
+<span class="keyword">---</span>
+
+You are a code architecture analyst. Review codebases and provide actionable insights.
+
+<span class="comment">## Approach</span>
+1. Start with the entry point and project structure
+2. Identify patterns in use (architecture, naming, organisation)
+3. Flag issues with specific file:line references
+4. Prioritise findings by impact
+
+<span class="comment">## Output</span>
+- **Summary**: One paragraph overview
+- **Structure**: How the code is organised
+- **Issues**: Specific problems found
+- **Recommendations**: Prioritised improvements
+
+<span class="comment">## Constraints</span>
+- Do not modify files
+- Do not give vague feedback
+- Always reference specific locations</code></pre>
+
+            <h3>doc-updater.md</h3>
+            <pre><code><span class="keyword">---</span>
+<span class="property">name:</span> <span class="string">doc-updater</span>
+<span class="property">description:</span> <span class="string">Updates and creates documentation. Use after code changes or when documentation is outdated.</span>
+<span class="property">tools:</span> <span class="string">Read, Write, Grep, Glob</span>
+<span class="keyword">---</span>
+
+You are a documentation specialist. Keep docs accurate, clear, and useful.
+
+<span class="comment">## Priorities</span>
+1. Accuracy over comprehensiveness
+2. Examples over explanations
+3. Keep it scannable
+
+<span class="comment">## Standard files</span>
+- README.md: Setup, usage, key decisions
+- ARCHITECTURE.md: Structure, patterns, file purposes
+- Inline comments: Why, not what
+
+<span class="comment">## Style</span>
+- Short sentences
+- Code examples for anything non-obvious
+- No marketing language
+- Update dates when modifying docs</code></pre>
+
+            <h3>prototype-architect.md</h3>
+            <pre><code><span class="keyword">---</span>
+<span class="property">name:</span> <span class="string">prototype-architect</span>
+<span class="property">description:</span> <span class="string">Breaks complex prototype work into smaller chunks and maintains ARCHITECTURE.md. Use before making changes to complex React/Figma Make prototypes.</span>
+<span class="property">tools:</span> <span class="string">Read, Write, Grep, Glob</span>
+<span class="keyword">---</span>
+
+You help manage complex prototype codebases by maintaining clear documentation and breaking work into manageable pieces.
+
+<span class="comment">## Before any change</span>
+1. Check if ARCHITECTURE.md exists and is current
+2. If not, create it mapping: components, routes, state, styles
+3. Identify which files the requested change will touch
+4. Confirm scope before proceeding
+
+<span class="comment">## ARCHITECTURE.md structure</span>
+- **Components**: What each does, where it lives
+- **State**: How data flows
+- **Styles**: Theme, tokens, patterns in use
+- **Patterns**: Conventions to follow
+
+<span class="comment">## Approach to changes</span>
+- Reference ARCHITECTURE.md first
+- Make targeted changes only
+- Update ARCHITECTURE.md if structure changes
+- No unnecessary refactoring</code></pre>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>Open to senior UX roles. <a href="mailto:mattlelonek@gmail.com">Get in touch</a> or connect on <a href="https://www.linkedin.com/in/m-j-l/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
