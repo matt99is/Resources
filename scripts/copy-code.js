@@ -1,7 +1,10 @@
 /**
- * Copy to Clipboard for Code Blocks
+ * Copy to Clipboard for Code Blocks and Prompt Blocks
  *
- * Adds a "Copy" button to all <pre> elements containing <code>.
+ * Adds a "Copy" button to:
+ * - All <pre> elements (code blocks)
+ * - All .prompt-block elements (AI prompts/templates)
+ *
  * When clicked, copies the text content to clipboard and shows feedback.
  *
  * Usage: Include this script at the end of your HTML body
@@ -19,30 +22,34 @@
   }
 
   function init() {
-    const codeBlocks = document.querySelectorAll('pre');
+    // Target both <pre> elements and .prompt-block elements
+    var codeBlocks = document.querySelectorAll('pre, .prompt-block');
 
-    codeBlocks.forEach(function(pre) {
+    codeBlocks.forEach(function(block) {
       // Skip if already has a copy button
-      if (pre.querySelector('.copy-button')) return;
+      if (block.querySelector('.copy-button')) return;
+      if (block.parentNode && block.parentNode.classList && block.parentNode.classList.contains('code-block-wrapper')) return;
 
       // Create wrapper for positioning
-      const wrapper = document.createElement('div');
+      var wrapper = document.createElement('div');
       wrapper.className = 'code-block-wrapper';
-      pre.parentNode.insertBefore(wrapper, pre);
-      wrapper.appendChild(pre);
+      block.parentNode.insertBefore(wrapper, block);
+      wrapper.appendChild(block);
 
       // Create copy button
-      const button = document.createElement('button');
+      var button = document.createElement('button');
       button.className = 'copy-button';
-      button.setAttribute('aria-label', 'Copy code to clipboard');
+      button.setAttribute('aria-label', 'Copy to clipboard');
       button.innerHTML = '<span class="copy-button__icon">Copy</span>';
 
       wrapper.appendChild(button);
 
       // Handle click
       button.addEventListener('click', function() {
-        const code = pre.querySelector('code') || pre;
-        const text = code.textContent;
+        // For <pre>, get text from <code> child if present, otherwise from pre itself
+        // For .prompt-block, get text directly
+        var textElement = block.querySelector('code') || block;
+        var text = textElement.textContent;
 
         copyToClipboard(text).then(function() {
           showFeedback(button, true);
@@ -61,7 +68,7 @@
 
     // Fallback for older browsers
     return new Promise(function(resolve, reject) {
-      const textArea = document.createElement('textarea');
+      var textArea = document.createElement('textarea');
       textArea.value = text;
       textArea.style.position = 'fixed';
       textArea.style.left = '-9999px';
@@ -71,7 +78,7 @@
       textArea.select();
 
       try {
-        const successful = document.execCommand('copy');
+        var successful = document.execCommand('copy');
         document.body.removeChild(textArea);
         if (successful) {
           resolve();
@@ -86,8 +93,8 @@
   }
 
   function showFeedback(button, success) {
-    const icon = button.querySelector('.copy-button__icon');
-    const originalText = icon.textContent;
+    var icon = button.querySelector('.copy-button__icon');
+    var originalText = icon.textContent;
 
     if (success) {
       icon.textContent = 'Copied!';

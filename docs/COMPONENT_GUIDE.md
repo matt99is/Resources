@@ -427,14 +427,60 @@ const plotlyTheme = {
 </div>
 ```
 
-### Prompt Blocks
-**Use for:** Code snippets, prompts, or terminal commands
+### Code Blocks vs Prompt Blocks
+
+Both code blocks and prompt blocks automatically get a **"Copy" button** on hover. Include the copy script on any page with copyable content.
+
+#### Code Blocks (`<pre><code>`)
+**Use for:** Actual code with syntax highlighting, terminal commands, file contents, configuration examples.
 
 ```html
+<pre><code>mkdir -p ~/.claude/agents</code></pre>
+
+<!-- With syntax highlighting spans -->
+<pre><code><span class="keyword">---</span>
+<span class="property">name:</span> <span class="string">my-agent</span>
+<span class="keyword">---</span></code></pre>
+```
+
+#### Prompt Blocks (`.prompt-block`)
+**Use for:** AI prompts, templates users will copy/paste, multi-line instructions.
+
+```html
+<div class="prompt-block">Create a new [ComponentName] component.
+
+Purpose: [What it does]
+
+Requirements:
+- [Requirement 1]
+- [Requirement 2]</div>
+```
+
+**With optional label:**
+```html
 <div class="prompt-block">
-  <span class="prompt-block__label">Example Prompt</span>
-  Your code or prompt content here
+  <span class="prompt-block__label">Initial Setup Prompt</span>
+  Your prompt content here...
 </div>
+```
+
+#### When to Use Each
+
+| Use Case | Component |
+|----------|-----------|
+| Shell commands | `<pre><code>` |
+| Configuration files | `<pre><code>` |
+| Code with syntax highlighting | `<pre><code>` |
+| AI prompts to copy/paste | `.prompt-block` |
+| Multi-line templates | `.prompt-block` |
+| Workflow instructions | `.prompt-block` |
+
+#### Copy Script Requirement
+Add before closing `</body>` tag on pages with code or prompt blocks:
+
+```html
+<!-- Copy Code Script -->
+<script src="/scripts/copy-code.js"></script>
 ```
 
 ### Comparison Grid
@@ -613,7 +659,9 @@ const plotlyTheme = {
 
 ### Performance
 - Optimize images before uploading (compress PNGs/JPGs)
-- Use external `lightbox.js` script (don't inline JavaScript)
+- Use external scripts (don't inline JavaScript):
+  - `/scripts/lightbox.js` for image lightbox functionality
+  - `/scripts/copy-code.js` for copy buttons on code/prompt blocks
 - Link to `design-system.css` (don't inline CSS)
 
 ### Component Selection
@@ -642,3 +690,4 @@ All templates include:
 - Numbered sections
 - Footer
 - Lightbox structure and script
+- Copy-to-clipboard script (for code/prompt blocks)

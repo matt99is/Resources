@@ -13,6 +13,7 @@ Every page must follow this exact order:
 5. **Numbered Sections** (Required)
 6. **Footer** (Required)
 7. **Lightbox** (Required if page has images)
+8. **Copy Script** (Required for guides with code/prompt blocks)
 
 ---
 
@@ -264,6 +265,34 @@ All content sections go inside this container.
 
 ---
 
+## 10. Copy-to-Clipboard Script (Required for Guide Pages)
+
+### When to Include
+
+Add this script to pages with code blocks (`<pre>`) or prompt blocks (`.prompt-block`):
+- Guides with copyable prompts or templates
+- Documentation with code examples
+- Any page where users need to copy content
+
+### Required Structure
+
+```html
+<!-- Copy Code Script -->
+<script src="/scripts/copy-code.js"></script>
+
+</body>
+</html>
+```
+
+**Rules:**
+- ✅ Place after lightbox script (if present), before closing `</body>` tag
+- ✅ Script automatically adds "Copy" button to all `<pre>` and `.prompt-block` elements
+- ✅ Button appears on hover and shows "Copied!" feedback
+
+**Note:** See COMPONENT_GUIDE.md for when to use `<pre><code>` vs `.prompt-block`.
+
+---
+
 ## Complete Page Structure Example
 
 ```html
@@ -346,6 +375,9 @@ All content sections go inside this container.
   <!-- Lightbox Script -->
   <script src="/scripts/lightbox.js"></script>
 
+  <!-- Copy Code Script (for guides with code/prompt blocks) -->
+  <script src="/scripts/copy-code.js"></script>
+
 </body>
 </html>
 ```
@@ -364,6 +396,7 @@ Before publishing any page, verify:
 - [ ] Sections use numbered `.section-header` pattern
 - [ ] Footer is **exactly** the standard footer (no modifications)
 - [ ] Lightbox script is external (`/scripts/lightbox.js`), not inline
+- [ ] Copy script included for guides with code/prompt blocks (`/scripts/copy-code.js`)
 - [ ] Design system CSS is linked (`/styles/design-system.css`), not inline
 
 ---
@@ -376,7 +409,7 @@ Use these starting points for new pages:
 - **Guides**: `/templates/guide-template.html`
 - **Analysis Reports**: `/templates/analysis-report-template.html`
 
-All templates now include the correct breadcrumb, footer, and lightbox structure.
+All templates now include the correct breadcrumb, footer, lightbox structure, and copy-code script.
 
 ---
 
