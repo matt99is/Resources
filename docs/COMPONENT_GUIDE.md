@@ -198,6 +198,21 @@ Display multiple cards in responsive grid.
 
 **When to use `.metric-value.large`:** For particularly important numbers (revenue, major KPIs).
 
+**When to use `.metric-value--compact`:** For text-heavy metrics that include words alongside numbers (e.g., "16 pages", "Days → Minutes"). Reduces font size from 48px to 24px for better readability with longer text.
+
+```html
+<div class="metrics-highlight">
+  <div class="metric-card">
+    <div class="metric-value metric-value--compact">16 pages</div>
+    <div class="metric-label">Analysed in ~10 minutes</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-value metric-value--compact">Days → Minutes</div>
+    <div class="metric-label">Time reduction vs manual audit</div>
+  </div>
+</div>
+```
+
 ### Score Badges
 **Use for:** Ratings, scores, grades (1-10 scale)
 

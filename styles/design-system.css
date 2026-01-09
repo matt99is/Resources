@@ -1495,6 +1495,11 @@ a.card {
   font-size: clamp(3rem, 8vw, 4rem);
 }
 
+/* Compact variant for text-heavy metrics (e.g., "16 pages", "Days → Minutes") */
+.metric-card .metric-value--compact {
+  font-size: var(--text-2xl);
+}
+
 /* Content images */
 .content-image {
   margin: var(--space-8) 0;
