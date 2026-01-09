@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How I built an automated competitive analysis tool with AI-assisted development, reducing audit time from days to 10 minutes.">
+  <meta name="author" content="Matt Lelonek">
+  <title>UX Analysis Tool Case Study | Matt Lelonek</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="/styles/design-system.css">
+</head>
+<body>
+
+  <!-- Breadcrumb -->
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>→</span>
+      <span>UX Analysis Tool</span>
+    </nav>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <p class="overline">Case Study</p>
+      <h1>Building a Competitive Analysis Tool with Claude Code</h1>
+      <p class="hero-subtitle">How I used AI-assisted development to turn a week of manual work into 10 minutes</p>
+      <div class="hero-meta">
+        <span><strong>Role:</strong> Designer / Product Owner</span>
+        <span>•</span>
+        <span><strong>Built with:</strong> Claude Code</span>
+        <span>•</span>
+        <span><strong>Timeline:</strong> A few days</span>
+        <span>•</span>
+        <span><strong>Methods:</strong> AI-assisted development, iterative problem-solving</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Image -->
+  <div class="container">
+    <div class="hero-image">
+      <img src="images/ux-tool-hero.png" alt="UX Analysis Tool interface showing competitive analysis results" class="lightbox-trigger">
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Table of Contents -->
+    <nav class="toc">
+      <p class="toc-title">Contents</p>
+      <ol>
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#solution">The Solution</a></li>
+        <li><a href="#building">Building with Claude Code</a></li>
+        <li><a href="#application">Real Application</a></li>
+        <li><a href="#results">The Results</a></li>
+        <li><a href="#learned">What I Learned</a></li>
+      </ol>
+    </nav>
+
+    <!-- Section 01: The Problem -->
+    <section id="problem" class="section">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">The Problem</h2>
+      </div>
+
+      <h3>Manual Audits Don't Scale</h3>
+
+      <p>Competitive UX analysis is essential for almost any design project. Understanding where competitors are strong, where they're weak, and where you can differentiate requires looking at multiple sites against consistent criteria.</p>
+
+      <p>The problem: doing this manually takes days. Sometimes a week. You capture screenshots, work through evaluation criteria, document findings, spot patterns across competitors. It's valuable work, but the time cost means you analyse fewer sites than you should.</p>
+
+      <p>For the basket optimisation project, I needed to audit 16 competitor sites against Baymard Institute guidelines. Doing that manually would have taken the better part of a week. And even then, the output would be notes in a document, not something structured enough to surface patterns automatically.</p>
+
+      <p>I wanted a tool that could do the analysis faster and at a scale that manual work couldn't match.</p>
+
+      <h3>The constraint</h3>
+
+      <p>I'm not a developer. I understand logic and systems thinking from a Visual Studio course in the late 90s, but I don't write Python or React. If this tool was going to exist, I'd need to build it a different way.</p>
+    </section>
+
+    <!-- Section 02: The Solution -->
+    <section id="solution" class="section">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">The Solution</h2>
+      </div>
+
+      <h3>What the Tool Does</h3>
+
+      <p>The UX Maturity Analysis tool automates competitive audits using Claude's vision capabilities. It captures screenshots of competitor pages, analyses them against research-backed criteria, and generates a report highlighting where the market is strong, where it's weak, and where opportunities exist.</p>
+
+      <p>The workflow:</p>
+
+      <ol>
+        <li>Enter competitor URLs and select the page type (homepage, product page, basket, checkout)</li>
+        <li>Playwright opens each site in a browser window</li>
+        <li>I navigate, close cookie banners, add products if needed, then trigger the screenshot</li>
+        <li>Screenshots are analysed in parallel via Claude API calls</li>
+        <li>The tool generates an interactive HTML report with findings</li>
+      </ol>
+
+      <p>The criteria come from Baymard Institute and Nielsen Norman Group research, configured in YAML files for each page type. Different page types get different evaluation criteria.</p>
+
+      <div class="metrics-highlight">
+        <div class="metric-card">
+          <div class="metric-value">16 pages</div>
+          <div class="metric-label">Analysed in ~10 minutes</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">11 criteria</div>
+          <div class="metric-label">Per page type, research-backed</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">Days → Minutes</div>
+          <div class="metric-label">Time reduction vs manual audit</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 03: Building with Claude Code -->
+    <section id="building" class="section">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Building with Claude Code</h2>
+      </div>
+
+      <h3>Directing Without Writing Code</h3>
+
+      <p>I built this with Claude Code over a few days. I described what I needed; Claude Code chose the tech stack and wrote the implementation. Python, Playwright for browser automation, Plotly for charts, YAML for configuration. None of these were my choices. I didn't know enough to make them.</p>
+
+      <p>My role was product owner and director. I defined the problem, described the desired outcome, and made decisions when things didn't work as expected.</p>
+
+      <h3>The Playwright problem</h3>
+
+      <p>The original plan was fully automated: the tool would visit each URL, capture screenshots, and analyse them without intervention. But competitor sites kept blocking Playwright, even with stealth mode enabled. Bot detection is good enough now that automated browsers get caught.</p>
+
+      <p>When I described the problem, we pivoted to human-in-the-loop. The browser opens, I take control to navigate and prepare the page, then hand back to the tool to capture screenshots. It's not fully automated, but it works reliably.</p>
+
+      <h3>What emerged organically</h3>
+
+      <p>The YAML-based criteria configuration wasn't planned. Claude Code suggested it as a way to support different page types without code changes. The parallel API calls that make analysis fast, the heatmap that surfaces patterns across competitors, the report structure that leads with exploitable weaknesses: these emerged through iteration, not upfront specification.</p>
+
+      <p>The report quality surprised me. I expected to spend significant time refining the output. Instead, Claude Code delivered something close to final on the first pass.</p>
+
+      <div class="content-image">
+        <img src="images/ux-tool-heatmap.png" alt="Heatmap showing competitive analysis scores across 16 competitors" class="lightbox-trigger">
+        <p class="image-caption">The heatmap became the most valuable part of the report. It shows at a glance where the entire market is weak, which is exactly what I need to identify differentiation opportunities.</p>
+      </div>
+    </section>
+
+    <!-- Section 04: Real Application -->
+    <section id="application" class="section">
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Real Application</h2>
+      </div>
+
+      <h3>Using It for Basket Optimisation</h3>
+
+      <p>The tool's first real use was the competitor analysis for my basket optimisation project. I analysed 16 pet retail sites against 11 basket-specific criteria.</p>
+
+      <p>The report surfaced two market-wide weaknesses I might have missed doing this manually:</p>
+
+      <p>Subscription options were absent or poorly implemented across 60% of competitors. For a category like pet food where repeat purchase is the norm, this is a significant gap.</p>
+
+      <p>Express checkout options were weak across the market. Most competitors funnelled everyone through the same checkout flow regardless of whether they were returning customers.</p>
+
+      <div class="callout callout--insight">
+        <p class="callout-label">What the tool surfaced</p>
+        <p>Market-wide weaknesses in subscription UX and express checkout. Both became priorities in my basket redesign, backed by evidence rather than assumption.</p>
+      </div>
+
+      <p>These findings directly shaped my basket proposal. The redesign now prioritises easy repurchase: buy it again functionality, saved for later, and a simple repeat toggle. Features that address genuine gaps in the competitive landscape, not just assumptions about what users want.</p>
+
+      <div class="cta-box">
+        <h3>View the full competitor analysis report</h3>
+        <p>See the complete analysis of 16 pet retail basket pages with interactive visualisations and detailed findings.</p>
+        <a href="#" class="btn">View Analysis Report →</a>
+      </div>
+    </section>
+
+    <!-- Section 05: The Results -->
+    <section id="results" class="section">
+      <div class="section-header">
+        <span class="section-number">05</span>
+        <h2 class="section-title">The Results</h2>
+      </div>
+
+      <h3>What Changed</h3>
+
+      <div class="metrics-highlight">
+        <div class="metric-card">
+          <div class="metric-value">~10 mins</div>
+          <div class="metric-label">To analyse 16 competitor pages</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">vs days</div>
+          <div class="metric-label">For the same work done manually</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">16 sites</div>
+          <div class="metric-label">Analysed vs 3-4 I would have done manually</div>
+        </div>
+      </div>
+
+      <p>The time saving is significant, but the bigger impact is scope. I analysed 16 competitors because the tool made it practical. Manually, I would have done 3 or 4 and hoped they were representative. More data means more confidence in the patterns you're seeing.</p>
+
+      <p>The structured output also matters. A heatmap showing scores across 16 competitors and 11 criteria surfaces patterns that are hard to see when your analysis lives in scattered notes. Universal weaknesses become obvious. So do the competitors worth studying more closely.</p>
+    </section>
+
+    <!-- Section 06: What I Learned -->
+    <section id="learned" class="section">
+      <div class="section-header">
+        <span class="section-number">06</span>
+        <h2 class="section-title">What I Learned</h2>
+      </div>
+
+      <h3>AI-Assisted Development Works</h3>
+
+      <p>I built production software without writing code. Not a prototype, not a proof of concept: a tool I've used for real work that changed how I approached a project. The barrier to building things has dropped significantly.</p>
+
+      <h3>Direct When It Works, Pivot When It Doesn't</h3>
+
+      <p>The fully automated approach failed. Rather than forcing it, we changed the model. Human-in-the-loop is less elegant but more reliable. Knowing when to pivot matters more than defending the original plan.</p>
+
+      <h3>Tools Should Surface What Matters First</h3>
+
+      <p>The report structure leads with market-wide weaknesses because that's what I need to make decisions. The tool doesn't just collect data; it organises it around the question I'm actually trying to answer: where can we differentiate?</p>
+
+      <h3>This Is How I'll Work Now</h3>
+
+      <p>The combination of AI-assisted prototyping (minibasket project) and AI-assisted tool building (this project) has changed my workflow. Problems that would have required developer time or manual effort now have a third option.</p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Open to senior UX roles. <a href="mailto:mattlelonek@gmail.com">Get in touch</a> or connect on <a href="https://www.linkedin.com/in/m-j-l/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox__content">
+      <button class="lightbox__close" aria-label="Close lightbox">&times;</button>
+      <img class="lightbox__image" src="" alt="">
+      <p class="lightbox__caption"></p>
+    </div>
+  </div>
+
+  <!-- Lightbox Script -->
+  <script src="/scripts/lightbox.js"></script>
+
+</body>
+</html>
