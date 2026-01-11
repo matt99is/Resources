@@ -1,7 +1,7 @@
 /**
  * Matt Lelonek Resources - Design System
  * 
- * Terracotta + Sans-serif + Warm Cream
+ * Teal + Sans-serif + Warm Light gray
  * Last updated: December 2024
  * 
  * Usage: Link this stylesheet in all HTML pages
@@ -16,28 +16,28 @@
   /* --- Colour Palette --- */
   
   /* Backgrounds */
-  --bg-primary: #FFFCF7;        /* Warm cream - main background */
-  --bg-secondary: #F8F5F0;      /* Darker cream - cards, sidebar */
-  --bg-tertiary: #F0EBE3;       /* Muted cream - hover states, borders */
+  --bg-primary: #FAFAFA;        /* Light gray - main background */
+  --bg-secondary: #F5F5F5;      /* Medium gray - cards, sidebar */
+  --bg-tertiary: #E5E5E5;       /* Darker gray - hover states, borders */
   --bg-code: #2D2A26;           /* Dark warm - code blocks */
   
   /* Accent */
-  --accent-primary: #B8432F;    /* Terracotta - primary actions, links */
-  --accent-hover: #9A3626;      /* Darker terracotta - hover states */
-  --accent-light: #F5E6E3;      /* Light terracotta - subtle highlights */
-  --accent-muted: #D4A59A;      /* Muted terracotta - secondary elements */
+  --accent-primary: #0D9488;    /* Teal - primary actions, links */
+  --accent-hover: #0F766E;      /* Darker teal - hover states */
+  --accent-light: #CCFBF1;      /* Light teal - subtle highlights */
+  --accent-muted: #5EEAD4;      /* Muted teal - secondary elements */
   
   /* Text */
   --text-primary: #1A1A1A;      /* Near black - headings, body */
   --text-secondary: #4A4A4A;    /* Dark grey - secondary text */
   --text-muted: #6B6B6B;        /* Medium grey - captions, meta */
   --text-light: #8A8A8A;        /* Light grey - placeholders */
-  --text-inverse: #FFFCF7;      /* Cream - text on dark backgrounds */
+  --text-inverse: #FAFAFA;      /* Light gray - text on dark backgrounds */
   
   /* Borders */
-  --border-light: #E5DED3;      /* Warm light border */
-  --border-medium: #D4CCC0;     /* Medium border */
-  --border-dark: #B8AFA3;       /* Strong border */
+  --border-light: #D4D4D4;      /* Light gray border */
+  --border-medium: #A3A3A3;     /* Medium gray border */
+  --border-dark: #737373;       /* Strong gray border */
   
   /* Status */
   --status-success: #2E7D32;
