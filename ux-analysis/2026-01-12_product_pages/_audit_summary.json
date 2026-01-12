@@ -1,0 +1,76 @@
+{
+  "audit_date": "2026-01-12",
+  "audit_timestamp": "2026-01-12T09:57:53.478005",
+  "analysis_type": "product_pages",
+  "analysis_type_name": "Product Page UX Maturity Analysis",
+  "total_competitors": 16,
+  "successful_analyses": 16,
+  "failed_analyses": 0,
+  "runtime_seconds": 2145.6,
+  "competitors": [
+    {
+      "name": "zooplus",
+      "url": "https://www.zooplus.co.uk/"
+    },
+    {
+      "name": "jollyes",
+      "url": "https://www.jollyes.co.uk/"
+    },
+    {
+      "name": "chewy",
+      "url": "https://www.chewy.com/"
+    },
+    {
+      "name": "pet supermarket",
+      "url": "https://pet-supermarket.co.uk/"
+    },
+    {
+      "name": "petshop.co.uk",
+      "url": "https://www.petshop.co.uk/"
+    },
+    {
+      "name": "pet drugs online",
+      "url": "https://www.petdrugsonline.co.uk/"
+    },
+    {
+      "name": "animed",
+      "url": "https://www.animed.co.uk/"
+    },
+    {
+      "name": "tesco",
+      "url": "https://www.tesco.com/"
+    },
+    {
+      "name": "sainsburys",
+      "url": "https://www.sainsburys.co.uk/"
+    },
+    {
+      "name": "morrisons",
+      "url": "https://groceries.morrisons.com/"
+    },
+    {
+      "name": "amazon",
+      "url": "https://www.amazon.co.uk/"
+    },
+    {
+      "name": "lords and labradors",
+      "url": "https://www.lordsandlabradors.co.uk/"
+    },
+    {
+      "name": "pooch and mutt",
+      "url": "https://www.poochandmutt.co.uk/"
+    },
+    {
+      "name": "pet planet",
+      "url": "https://petplanet.co.uk/"
+    },
+    {
+      "name": "Viovet",
+      "url": "https://www.viovet.co.uk/"
+    },
+    {
+      "name": "pets corner",
+      "url": "https://www.petscorner.co.uk/"
+    }
+  ]
+}
